@@ -2,7 +2,8 @@ $(document).ready(function() {
 
 
 
-  //CREATE SONGS
+
+});
 $('#modalButton').on('click', function() {
 
     //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
@@ -11,4 +12,12 @@ $('#modalButton').on('click', function() {
 
 
 });
+
+$('#modalButtonLogin').on('click', function() {
+
+    //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
+    $('#triggerModalLogin').modal();
+   
+
+
 });
