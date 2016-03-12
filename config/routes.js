@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost/friendme');
 
 //index page
 router.get('/', function(req, res) {
-	res.render("layout");
+	res.render("./partials/welcome");
 });
 
 

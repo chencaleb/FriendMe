@@ -28,7 +28,7 @@ hbsutils.registerWatchedPartials(__dirname + '/views/partials');
 
 
 app.use(routes);
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 5000, function() {
 	console.log('server is running');
 });
 
