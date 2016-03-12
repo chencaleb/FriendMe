@@ -1,4 +1,3 @@
-
 var express = require('express'),
 	app = express(),
 	mongoose = require('mongoose'),
@@ -11,9 +10,12 @@ var	router = express.Router();
 
 mongoose.connect('mongodb://localhost/friendme');
 
+//index page
 router.get('/', function(req, res) {
-	res.send("Welcome to FriendMe");
+	res.render("layout");
 });
+
+
 
 
 
