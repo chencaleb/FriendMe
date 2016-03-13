@@ -11,23 +11,26 @@ var usersController = {
 
   show: function(req, res) {
   	var id = req.params.id;
-
+  	// console.log("ID***** ", id);
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
-  		 res.status(200).send(JSON.stringify(user));
+  		 res.render('./partials/show', {user: user});
   	});
   },
 
   create: function(req, res) {
-  	var user = req.body.user;
-  	// console.log(user);
+  	var user = req.body;
+  	console.log(user);
+
   	User.create(user, function(err, user) {
+      console.log("ERROR", err);
 	  	err ?
 	  		// handle error
 	  		res.status(500).send() :
-	  		// handle success
+
 	  		// console.log('created USER', user);
-	  		res.status(201).send(JSON.stringify(user));
+	  		res.status(201).json(user);
+        // console.log("USER*****", user);
 	  });
  },
 
@@ -41,13 +44,13 @@ var usersController = {
 	    if (req.body.email) user.email = req.body.email;
 	    if (req.body.photo_url) user.photo_url = req.body.photo_url;
 	    if (req.body.passwordDigest) user.passwordDigest = req.body.passwordDigest;
-	    var obj = {
-	      first_name: user.first_name,
-	      last_name: user.last_name,
-	      email: user.email,
-	      photo_url: user.photo_url,
-	      passwordDigest: user.passwordDigest
-	    }
+	    // var obj = {
+	    //   first_name: user.first_name,
+	    //   last_name: user.last_name,
+	    //   email: user.email,
+	    //   photo_url: user.photo_url,
+	    //   passwordDigest: user.passwordDigest
+	    // }
 
 	    user.save(function(err, savedUser) {
 	      if (err) {
@@ -60,6 +63,16 @@ var usersController = {
 	    });
   });
 },
+
+//   delete: function(req, res) {
+//     var id = req.params.id;
+//     console.log("ID ", id)
+//     User.findById(id, function(err, user) {
+//       if(err) returnError(err);
+//       console.log("USER", user);
+//       user.remove(function() 
+//   });
+// },
 
  apiIndex: function(req, res) {
  	  User.find({}, function(err, users) {

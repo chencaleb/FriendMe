@@ -7,8 +7,6 @@
 </button>
 </div>
 
-
-
 <!-- begin userModal: this is not visible until you call .modal() on it -->
     <div class="modal fade" tabindex="-1" role="dialog" id="triggerModal">
       <div class="modal-dialog">
@@ -18,70 +16,70 @@
             <h4 class="modal-title">Sign up</h4>
           </div>
           <div class="modal-body">
-            <fieldset class='form-horizontal'>
+          <fieldset class='form-horizontal'>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="firstName">First Name</label>
-              <div class="col-md-4">
-              <input id="firstName" name="firstName" type="text" placeholder="" class="form-control input-md" required="">
+            <form id="newUser" onsubmit="user.createUser(event)">
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="firstName">First Name</label>
+                <div class="col-md-4">
+                <input id="firstName" name="firstName" type="text"placeholder="" class="form-control input-md" required="">
 
+                </div>
               </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="lastName">Last Name</label>
-              <div class="col-md-4">
-              <input id="lastName" name="lastName" type="text" placeholder="" class="form-control input-md" required="">
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="lastName">Last Name</label>
+                <div class="col-md-4">
+                <input id="lastName" name="lastName" type="text"placeholder="" class="form-control input-md" required="">
 
+                </div>
               </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="password">Password</label>
-              <div class="col-md-4">
-              <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="passwordDigest">Password</label>
+                <div class="col-md-4">
+                <input id="passwordDigest" name="passwordDigest" type="password" placeholder="" class="form-control input-md" required="">
 
+                </div>
               </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="password">Confirmation password</label>
-              <div class="col-md-4">
-              <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
-
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="password">Confirmation password</label>
+                <div class="col-md-4">
+                <input id="password" name="password" type="password"placeholder="" class="form-control input-md" required="">
+                </div>
               </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="email">Email</label>
-              <div class="col-md-4">
-              <input id="email" name="email" type="email" placeholder="" class="form-control input-md">
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                <input id="email" name="email" type="email" placeholder="" class="form-control input-md">
 
+                </div>
               </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="photo_url">Photo</label>
-              <div class="col-md-4">
-              <input id="photo_url" name="photo_url" type="file" placeholder="" class="btn btn-default btn-file" required="">
-
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="photoUrl">Photo</label>
+                <div class="col-md-4">
+                <input id="photoUrl" name="photoUrl" type="file" placeholder="" class="btn btn-default btn-file" required="">
+                </div>
               </div>
-            </div>
 
-            </fieldset>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
+                <input type="submit" class="btn-default">
+                <!-- <button type="button" class="btn btn-primary" id="saveUser">Save User</button> -->
+              </div>
+            </form>
 
+          </fieldset>
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
-            <button type="button" class="btn btn-primary" id="saveUser" method="POST" action="api/users">Save User</button>
-          </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

@@ -23,7 +23,6 @@ router.get('/', function(req, res) {
 //USER ROUTES
 router.route('/')
 	.get(usersController.index);
-	// .post(usersController.create);
 
 /*
  * JSON API Endpoints
@@ -38,7 +37,7 @@ router.route('/api/users/:id')
 	// Show User
 	.get(usersController.show)
 	.put(usersController.update);
-	// .put(usersController.delete);
+	// .delete(usersController.delete);
 
 //api
 router.route('/api')

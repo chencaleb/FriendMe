@@ -1,1 +1,19 @@
-show.hbs
+ <div id="profile-page"></div>
+<h1>{{user.firstName}}</h1>
+  	<!-- <script id="profile-template" type="text/x-handlebars-template"> -->
+<!--   	\{{#each users}} -->
+	  	<div id="\{{_id}}">
+	  		<img src="{{photo_url}}" alt="profile pic" id="profile_image">
+	      <h2>Name: {{user.firstName}} {{user.lastName}}</h2>
+				<h3>Email: {{user.email}}</h3>
+			</div>
+<!-- 		\{{/each}} -->
+<!-- 		</script> -->
+
+		<div>
+			<a href="#" class="btn btn-default">Edit</a>
+			<form id="deleteUser" method="POST" action="api/users/{{user._id}}?_method=delete" class="form-horizontal">
+				<input class="btn btn-default" id="deleteUser" value="Delete"/>
+			</form>
+		</div>
+
