@@ -11,26 +11,38 @@ var	router = express.Router();
 
 mongoose.connect('mongodb://localhost/friendme');
 
-//index page
+//welcome page
 router.get('/', function(req, res) {
 	res.render("./partials/welcome");
 });
 
+/*
+ * HTML Endpoints
+ */
 
+//USER ROUTES
+router.route('/')
+	.get(usersController.index);
+	// .post(usersController.create);
+
+/*
+ * JSON API Endpoints
+ */
+
+//api users
 router.route('/api/users')
-	.get(usersController.apiUsersIndex);
+	.get(usersController.apiIndex)
+	.post(usersController.create);
+	
+router.route('/api/users/:id')
+	// Show User
+	.get(usersController.show)
+	.put(usersController.update);
+	// .put(usersController.delete);
 
-// router.route('/api/users/:id')
-// 	.get((usersController.apiUser);
-
+//api
 router.route('/api')
 	.get(usersController.apiRoot);
-
-
-
-
-
-
 
 
 

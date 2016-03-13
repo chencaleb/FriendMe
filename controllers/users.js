@@ -2,24 +2,72 @@ var User = require('../models/user');
 
 var usersController = {
 
-  userIndex: function(req, res) {
-    User.find({}, function(err, users) {
-      res.render('layout');
-    });
-  },
-
-  
-
-
-
-  apiUsersIndex: function(req, res) {
+  index: function(req, res) {
      User.find({}, function(err, users) {
+     	if(err) returnError(err);
       res.status(200).send(JSON.stringify(users));
     });
   },
 
+  show: function(req, res) {
+  	var id = req.params.id;
 
-  apiRoot: function(req, res) {
+  	User.findById(id, function(err, user) {
+  		if(err) returnError(err);
+  		 res.status(200).send(JSON.stringify(user));
+  	});
+  },
+
+  create: function(req, res) {
+  	var user = req.body.user;
+  	// console.log(user);
+  	User.create(user, function(err, user) {
+	  	err ?
+	  		// handle error
+	  		res.status(500).send() :
+	  		// handle success
+	  		// console.log('created USER', user);
+	  		res.status(201).send(JSON.stringify(user));
+	  });
+ },
+
+ 	update: function(req, res) {
+ 		var id = req.params.id;
+ 		// console.log("ID ", id)
+ 	  User.findById(id, function(err, user){
+	    if (err) returnError(err);
+	    if (req.body.first_name) user.first_name = req.body.first_name;
+	    if (req.body.lastname) user.last_name = req.body.lastname;
+	    if (req.body.email) user.email = req.body.email;
+	    if (req.body.photo_url) user.photo_url = req.body.photo_url;
+	    if (req.body.passwordDigest) user.passwordDigest = req.body.passwordDigest;
+	    var obj = {
+	      first_name: user.first_name,
+	      last_name: user.last_name,
+	      email: user.email,
+	      photo_url: user.photo_url,
+	      passwordDigest: user.passwordDigest
+	    }
+
+	    user.save(function(err, savedUser) {
+	      if (err) {
+	      	// returnError(err)
+	      	console.log("ERROR ", err);
+	      	res.status(200)
+	      }
+	      	res.json(savedUser)
+	      	console.log('savedUser ', savedUser);
+	    });
+  });
+},
+
+ apiIndex: function(req, res) {
+ 	  User.find({}, function(err, users) {
+      res.status(200).send(JSON.stringify(users));
+    });
+ },
+
+ apiRoot: function(req, res) {
     res.json({
       message: "Welcome to FriendMe!",
       documentation_url: "www.friendMe.com",
@@ -31,8 +79,12 @@ var usersController = {
       ]
     });
   }
-
 }
+
+function returnError (err) {
+  return console.log(err);
+}
+
 
 module.exports = usersController;
 

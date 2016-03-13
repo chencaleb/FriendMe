@@ -9,7 +9,7 @@
 
 
 
-<!-- begin songModal: this is not visible until you call .modal() on it -->
+<!-- begin userModal: this is not visible until you call .modal() on it -->
     <div class="modal fade" tabindex="-1" role="dialog" id="triggerModal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -67,9 +67,9 @@
 
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="photo">Photo</label>
+              <label class="col-md-4 control-label" for="photo_url">Photo</label>
               <div class="col-md-4">
-              <input id="photo" name="photo" type="file" placeholder="" class="btn btn-default btn-file" required="">
+              <input id="photo_url" name="photo_url" type="file" placeholder="" class="btn btn-default btn-file" required="">
 
               </div>
             </div>
@@ -80,7 +80,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
-            <button type="button" class="btn btn-primary" id="saveSong" method="POST" action="/">Save changes</button>
+            <button type="button" class="btn btn-primary" id="saveUser" method="POST" action="api/users">Save User</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
