@@ -32,7 +32,7 @@ var userList = [
 
 ];
 
-User.create(users, function(err, docs) {
+User.create(userList, function(err, docs) {
 	if(err) {
 		console.log("ERROR ", err);
 	} else {
