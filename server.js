@@ -11,8 +11,6 @@ var express = require('express'),
 	logger = require('morgan'),
 	routes = require('./config/routes');
 
-
-
 //static files from public folder
 
 app.use(express.static(__dirname + '/public'));
