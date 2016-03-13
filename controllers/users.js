@@ -8,6 +8,9 @@ var usersController = {
     });
   },
 
+  
+
+
 
   apiUsersIndex: function(req, res) {
      User.find({}, function(err, users) {

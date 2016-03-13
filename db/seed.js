@@ -12,19 +12,22 @@ User.remove({}, function(err) {
 var userList = [
 
 				{
-					name: "Luca Spezzano",
+					first_name: "Luca",
+					last_name: "Spezzano",
 					email: "luca@93.com",
 					photo_url: "http://blogs.oregonstate.edu/jenniferblanger/files/2015/04/Elia-Locardi-Travel-Photography-Roman-Radiance-Rome-Italy-1440-WM-DM-60q.jpg",
 					passwordDigest: "password",
 				},
 				{
-					name: "Ivan Zich",
+					first_name: "Ivan",
+					last_name: "Zich",
 					email: "ivan@.com",
 					photo_url: "http://i2.cdn.turner.com/cnnnext/dam/assets/140324130329-croatia---veli-rat-horizontal-large-gallery.jpg",
 					passwordDigest: "password",
 				},
 				{
-					name: "Caleb Chen",
+					first_name: "Caleb",
+					last_name: "Chen",
 					email: "caleb@.com",
 					photo_url: "https://www.inqbation.com/wp-content/uploads/2012/06/6911733-san-francisco-night.jpg",
 					passwordDigest: "password",
