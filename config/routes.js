@@ -5,6 +5,7 @@ var express = require('express'),
 	methodOverride = require('method-override'),
 	path = require('path'),
 	logger = require('morgan');
+	usersController = require('../controllers/users');
 
 var	router = express.Router();
 
@@ -16,7 +17,14 @@ router.get('/', function(req, res) {
 });
 
 
+router.route('/api/users')
+	.get(usersController.apiUsersIndex);
 
+// router.route('/api/users/:id')
+// 	.get((usersController.apiUser);
+
+router.route('/api')
+	.get(usersController.apiRoot);
 
 
 
