@@ -14,8 +14,6 @@ var express 	   	= require('express'),
 	cookieParser   	= require("cookie-parser");
 	passport       	= require('passport');
 
-
-
 //static files from public folder
 app.use( cookieParser() );
 app.use(expressSession({secret: 'mySecretKey'}));

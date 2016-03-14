@@ -13,6 +13,12 @@ html body {width: 100%; height: 100%;}
     color: #000!important;
    
 }
+
+.btn-lg:hover {
+    background-color: #EAFD61;
+    color: #279EA2;
+}
+
 .jumbotron { 
 	padding-top: 2%;
 	height: 40em; 
@@ -25,8 +31,8 @@ html body {width: 100%; height: 100%;}
 
 }
 .fixed {
-        position: fixed;
-        width: 100%;
+  position: fixed;
+  width: 100%;
 }
 
 .jumbotron h1{
@@ -42,8 +48,8 @@ html body {width: 100%; height: 100%;}
 }
 
 .btn-file {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 .btn-file input[type=file] {
     position: absolute;
