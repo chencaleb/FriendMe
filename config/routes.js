@@ -40,8 +40,8 @@ router.route('/api/users')
 	
 router.route('/api/users/:id')
 	// Show User
-	.get(usersController.show)
-	.put(usersController.update);
+	.get(usersController.show);
+	// .put(usersController.update);
 	// .delete(usersController.delete);
 
 //api
