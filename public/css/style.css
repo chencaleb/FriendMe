@@ -3,6 +3,7 @@ html body {width: 100%; height: 100%;}
 .navbar {
 	background-color: #EFA321;
 	height: 6em;
+    z-index: 1
 }
 .jumbotron { 
 	padding-top: 2%;
@@ -39,4 +40,48 @@ html body {width: 100%; height: 100%;}
     background: white;
     cursor: inherit;
     display: block;
+}
+
+/*destinations*/
+
+
+.city {
+    float: left;
+    width:25%;
+    height: 25em;
+    margin-left: 6%;
+    margin-top: 8%;
+}
+.city:hover {
+ 
+    opacity: 0.4;
+    cursor: pointer;
+
+}
+
+.citiesContainer {
+ 
+
+}
+
+.panel-body {
+ 
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+
+   
+
+}
+#london {
+    background-image: url("http://altitudeacquisitions.co.uk/wp-content/uploads/2014/08/london.jpg");
+    background-size: cover;
+}
+#paris {
+    background-image: url("https://www.cpp.edu/~international/study-abroad/img/jXMx4mQz6MsnhP1FSKp2TJMt.jpeg");
+    background-size: cover;
+}
+#rome {
+    background-image: url("http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/Italy/Rome/colosseum-rome-large.jpg");
+    background-size: cover;
 }

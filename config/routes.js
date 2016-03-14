@@ -14,10 +14,17 @@ var	router = express.Router();
 
 mongoose.connect('mongodb://localhost/friendme');
 
-//index page
+//welcome page
 router.get('/', function(req, res) {
 	res.render("./partials/welcome");
 });
+
+//index page
+router.get('/index', function(req, res) {
+	res.render("./partials/index");
+});
+
+
 
 
 
