@@ -1,9 +1,17 @@
 html body {width: 100%; height: 100%;}
 
 .navbar {
-	background-color: #EFA321;
+	background-color: gray;
 	height: 6em;
     z-index: 1
+}
+
+.navbar a{
+    color: #fff!important;
+}
+.navbar a:hover{
+    color: #000!important;
+   
 }
 .jumbotron { 
 	padding-top: 2%;
@@ -12,7 +20,10 @@ html body {width: 100%; height: 100%;}
 	background-size: cover;
 	color: #fff;
 }
+#modalButtonLogin {
+    outline: none;
 
+}
 .fixed {
         position: fixed;
         width: 100%;
