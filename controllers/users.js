@@ -11,6 +11,7 @@ var usersController = {
 
   show: function(req, res) {
   	var id = req.params.id;
+    console.log("yser hererrerer:",req.session);
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
   		 res.render('./partials/show', {userJS: JSON.stringify(user), user: user});
@@ -20,7 +21,7 @@ var usersController = {
   create: function(req, res) {
   	var user = req.body;
     console.log(req.body);
-  	User.create(user, function(err, user) {
+  	User.createSecure(user, function(err, user) {
 	  	err ?
 	  		res.status(500).send() :
 	  		res.status(201).send(JSON.stringify(user));

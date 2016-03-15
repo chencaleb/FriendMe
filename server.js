@@ -13,15 +13,16 @@ var express 	   	= require('express'),
 	expressSession 	= require('express-session');
 	cookieParser   	= require("cookie-parser");
 	passport       	= require('passport');
+	bcrypt 			= require('bcrypt');
 
 //static files from public folder
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use( cookieParser() );
 app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('__method'));
 app.use(logger('dev'));
 
