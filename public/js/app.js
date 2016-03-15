@@ -1,40 +1,41 @@
-//client-side logic
-console.log('testing');
-
 var user = {};
 
 // post method
 user.createUser = function(e) {
 	e.preventDefault();
 	var newUser = $(e.target).serialize();
-		// console.log('NEW USER ', newUser);
+  console.log(newUser);
   $.post("/api/users", newUser)
     .done(function(res) {
-     // console.log('RESS', res);
-     var userId = res._id;
-  	 window.location.href = '/api/users/' + userId;
-     // console.log('/api/users/' + res._id);
-    // user.renderUser(res);
-
+     var id = JSON.parse(res)._id;
+  	 window.location.href = '/api/users/' + id;
   })
     .fail(function(err) {
       console.log("Error", err);
-    })
-   
-}
+    });  
+};
 
-// user.renderUser = function(user) {
-// 	var user = JSON.parse(user);
-//     console.log("USER****** ", user);
-//   var $profilePage = $('#profile-page');
-//   var profileTemplate = Handlebars.complile($('#profile-template').html());
-//     console.log("TEMPLATE", $('#profile-template'));
-//     pass the data into the template
-//   var compiledHTML = profileTemplate(user);
-//     console.log("USER", user);
-//   $profilePage.append(compiledHTML);
+user.deleteUser = function(e) {
+  var id = $(e.target).parent().attr("id");
+  var ajaxOption = {
+    url: '/api/users/' + id,
+    type: "DELETE",
+    success: function(result) {
+      $("#" + id).remove();
+      window.location.href = '/';
+    }
+  };
+  $.ajax(ajaxOption);
+};
 
-// }
+user.renderUser = function(user) {
+  var showUser = user;
+  var $profilePage = $('#profile-page');
+  $profilePage.html("");
+  var userTemplate = Handlebars.compile($('#user-template').html());
+  var compiledHTML = userTemplate({user: showUser});
+  $profilePage.append(compiledHTML);
+};
 
 
 $('#modalButton').on('click', function() {

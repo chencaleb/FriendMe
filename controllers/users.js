@@ -11,28 +11,31 @@ var usersController = {
 
   show: function(req, res) {
   	var id = req.params.id;
-  	// console.log("ID***** ", id);
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
-  		 res.render('./partials/show', {user: user});
+  		 res.render('./partials/show', {user: JSON.stringify(user)});
   	});
   },
 
   create: function(req, res) {
   	var user = req.body;
-  	console.log(user);
-
+    console.log(req.body);
   	User.create(user, function(err, user) {
-      console.log("ERROR", err);
 	  	err ?
-	  		// handle error
 	  		res.status(500).send() :
-
-	  		// console.log('created USER', user);
-	  		res.status(201).json(user);
-        // console.log("USER*****", user);
+	  		res.status(201).send(JSON.stringify(user));
 	  });
  },
+
+  destroy: function(req, res) {
+
+    User.remove({_id: req.params.id}, function(err, user) {
+      console.log(req.params.id);
+      err ? 
+        res.status(500).send() :
+        res.status(204).send(JSON.stringify(user));
+      });
+  },
 
 //  	update: function(req, res) {
 //  		var id = req.params.id;
@@ -57,14 +60,6 @@ var usersController = {
 //   });
 // },
 
-//   delete: function(req, res) {
-//     var id = req.params.id;
-//     console.log("ID ", id)
-//     User.findById(id, function(err, user) {
-//       if(err) returnError(err);
-//       console.log("USER", user);
-//       user.remove(function() 
-//   });
 // },
 
  apiIndex: function(req, res) {
@@ -85,7 +80,7 @@ var usersController = {
       ]
     });
   }
-}
+};
 
 function returnError (err) {
   return console.log(err);

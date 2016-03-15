@@ -25,31 +25,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('__method'));
 app.use(logger('dev'));
 
-// Setting up the Passport Strategies
-require("./config/passport")(passport);
-
 app.set('views', path.join(__dirname + '/views'));
 app.set('view engine', 'hbs');
 
 hbsutils.registerWatchedPartials(__dirname + '/views/partials');
 
-app.get('/', function(req, res){
-  res.render('./partials/welcome', {user: req.user});
-});
-
-app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email'} ));
-
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', {
-    successRedirect: '/',
-    failureRedirect: '/'
-  })
-);
-
-app.get("/logout", function(req, res){
-  req.logout();
-  res.redirect("/");
-});
+// app.get("/logout", function(req, res){
+//   req.logout();
+//   res.redirect("/");
+// });
 
 app.use(routes);
 app.listen(process.env.PORT || 5000, function() {
@@ -58,3 +42,14 @@ app.listen(process.env.PORT || 5000, function() {
 
 
 
+// Setting up the Passport Strategies
+// require("./config/passport")(passport);
+
+// app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email'} ));
+
+// app.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', {
+//     successRedirect: '/',
+//     failureRedirect: '/'
+//   })
+// );

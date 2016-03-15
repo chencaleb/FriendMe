@@ -1,19 +1,22 @@
  <div id="profile-page"></div>
-<h1>{{user.firstName}}</h1>
-  	<!-- <script id="profile-template" type="text/x-handlebars-template"> -->
-<!--   	\{{#each users}} -->
-	  	<div id="\{{_id}}">
-	  		<img src="{{photo_url}}" alt="profile pic" id="profile_image">
-	      <h2>Name: {{user.firstName}} {{user.lastName}}</h2>
-				<h3>Email: {{user.email}}</h3>
-			</div>
-<!-- 		\{{/each}} -->
-<!-- 		</script> -->
 
-		<div>
-			<a href="#" class="btn btn-default">Edit</a>
-			<form id="deleteUser" method="POST" action="api/users/{{user._id}}?_method=delete" class="form-horizontal">
-				<input class="btn btn-default" id="deleteUser" value="Delete"/>
-			</form>
+
+
+ <script id="user-template" type="text/x-handlbars-template">
+
+	<h1> \{{user.firstName}} </h1>
+
+		<div id="\{{user._id}}" class="profile">
+			<img src="\{{user.photoUrl}}" alt="profile pic" id="profile_image">
+    		<p>Name: \{{user.firstName}} \{{user.lastName}}</p>
+			<p>Email: \{{user.email}}</p>
+
+			<a href="#" class="btn btn-default"> Edit </a>
+			<button class= "btn delete-btn" onclick="user.deleteUser(event)">Delete</button>
 		</div>
 
+</script> 
+
+<script type="text/javascript">
+	user.renderUser({{{user}}});
+</script>
