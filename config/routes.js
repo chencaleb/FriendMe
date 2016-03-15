@@ -45,8 +45,8 @@ router.route('/api/users')
 router.route('/api/users/:id')
 	// Show User
 	.get(usersController.show)
-	.delete(usersController.destroy);
-	// .put(usersController.update);
+	.delete(usersController.destroy)
+	.put(usersController.update);
 
 
 

@@ -11,12 +11,91 @@
     		<p>Name: \{{user.firstName}} \{{user.lastName}}</p>
 			<p>Email: \{{user.email}}</p>
 
-			<a href="#" class="btn btn-default"> Edit </a>
+      <button class="btn btn-primary btn-md" id="modalEditUser" onclick="user.editUser(event)" data-toggle="modal" data-target="#triggerEditModal">Edit</button>
 			<button class= "btn delete-btn" onclick="user.deleteUser(event)">Delete</button>
 		</div>
 
 </script> 
 
 <script type="text/javascript">
-	user.renderUser({{{user}}});
+  user.renderUser({{{userJS}}});
 </script>
+
+
+<!-- <button id="deleteButton" type="submit" class="btn btn-primary btn-lg">Delete</button> -->
+{{!-- </div> --}}
+<!-- begin userModal: this is not visible until you call .modal() on it -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="triggerEditModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Edit Profile</h4>
+          </div>
+          <div class="modal-body">
+          <fieldset class='form-horizontal'>
+
+            <form id="newUser" onsubmit="user.createUser(event)">
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="firstName">First Name</label>
+                <div class="col-md-4">
+                <span class="noedit">{{firstName}}</span>
+                <input id="firstName" name="firstName" type="text" value="{{user.firstName}}" class="form-control input-md" required="">
+
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="lastName">Last Name</label>
+                <div class="col-md-4">
+                <input id="lastName" name="lastName" type="text" value="{{user.lastName}}" class="form-control input-md" required="">
+
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="passwordDigest">Password</label>
+                <div class="col-md-4">
+                <input id="passwordDigest" name="passwordDigest" type="password" value="{{user.passwordDigest}}" class="form-control input-md" required="">
+
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="password">Confirmation password</label>
+                <div class="col-md-4">
+                <input id="password" name="password" type="password" value="{{user.passwordDigest}}" class="form-control input-md" required="">
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                <input id="email" name="email" type="email" value="{{user.email}}" class="form-control input-md">
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="photoUrl">Photo</label>
+                <div class="col-md-4">
+                <input id="photoUrl" name="photoUrl" type="file" value="{{user.photoUrl}}" class="btn btn-default btn-file" required="">
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
+                <button type="button" class="btn btn-primary" id="saveUser">Save</button>
+              </div>
+            </form>
+
+          </fieldset>
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->

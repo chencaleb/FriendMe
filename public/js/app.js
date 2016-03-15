@@ -28,6 +28,18 @@ user.deleteUser = function(e) {
   $.ajax(ajaxOption);
 };
 
+user.editUser = function(e) {
+  var id = $(e.target).parent().attr("id");
+  var ajaxOption = {
+    url: '/api/users/' + id,
+    type: "PUT",
+    success: function(result) {
+      console.log("success");
+    }
+  };
+  $.ajax(ajaxOption);
+};
+
 user.renderUser = function(user) {
   var showUser = user;
   var $profilePage = $('#profile-page');
@@ -41,12 +53,13 @@ user.renderUser = function(user) {
 $('#modalButton').on('click', function() {
     //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
     $('#triggerModal').modal();
-
 });
 
 $('#modalButtonLogin').on('click', function() {
-
     //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
     $('#triggerModalLogin').modal();
-   
+});
+
+$('#modalEditUser').on('click', function() {
+  $('#triggerEditModal').modal();
 });

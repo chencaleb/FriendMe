@@ -13,7 +13,7 @@ var usersController = {
   	var id = req.params.id;
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
-  		 res.render('./partials/show', {user: JSON.stringify(user)});
+  		 res.render('./partials/show', {userJS: JSON.stringify(user), user: user});
   	});
   },
 
@@ -37,28 +37,23 @@ var usersController = {
       });
   },
 
-//  	update: function(req, res) {
-//  		var id = req.params.id;
-//  		// console.log("ID ", id)
-//  	  User.findById(id, function(err, user){
-// 	    if (err) returnError(err);
-// 	    if (req.body.first_name) user.first_name = req.body.first_name;
-// 	    if (req.body.lastname) user.last_name = req.body.lastname;
-// 	    if (req.body.email) user.email = req.body.email;
-// 	    if (req.body.photo_url) user.photo_url = req.body.photo_url;
-// 	    if (req.body.passwordDigest) user.passwordDigest = req.body.passwordDigest;
+ 	update: function(req, res) {
+ 		var id = req.params.id;
+ 	  User.findById(id, function(err, user){
+	    if (err) returnError(err);
+	    if (req.body.firstName) user.firstName = req.body.firstName;
+	    if (req.body.lastName) user.lastName = req.body.lastName;
+	    if (req.body.email) user.email = req.body.email;
+	    if (req.body.photoUrl) user.photoUrl = req.body.photoUrl;
+	    if (req.body.passwordDigest) user.passwordDigest = req.body.passwordDigest;
 
-// 	    user.save(function(err, savedUser) {
-// 	      if (err) {
-// 	      	// returnError(err)
-// 	      	console.log("ERROR ", err);
-// 	      	res.status(200)
-// 	      }
-// 	      	res.json(savedUser)
-// 	      	console.log('savedUser ', savedUser);
-// 	    });
-//   });
-// },
+	    user.save(function(err, savedUser) {
+	      err ? 
+	      	res.status(200) :
+	      	res.json(savedUser)
+      });
+    });
+},
 
 // },
 
