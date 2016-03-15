@@ -40,14 +40,16 @@ var usersController = {
  	update: function(req, res) {
  		var id = req.params.id;
  	  User.findById(id, function(err, user){
+      // console.log("ID***", user);
 	    if (err) returnError(err);
 	    if (req.body.firstName) user.firstName = req.body.firstName;
 	    if (req.body.lastName) user.lastName = req.body.lastName;
 	    if (req.body.email) user.email = req.body.email;
 	    if (req.body.photoUrl) user.photoUrl = req.body.photoUrl;
 	    if (req.body.passwordDigest) user.passwordDigest = req.body.passwordDigest;
-
+      console.log("REQ. BODY" , req);
 	    user.save(function(err, savedUser) {
+        // console.log("saved user***", savedUser);
 	      err ? 
 	      	res.status(200) :
 	      	res.json(savedUser)

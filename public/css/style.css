@@ -67,6 +67,31 @@ html body {width: 100%; height: 100%;}
     display: block;
 }
 
+/*profile page */
+
+#profile_image {
+  margin-top: 10%;
+  display: block;
+  width: 40%;
+}
+
+
+/*welcome page */
+.welcome_content_div {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.content_h2 {
+  text-align: center;
+}
+
+.content_p {
+  text-align: center;
+}
+
+
+
 /*destinations*/
 
 

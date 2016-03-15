@@ -29,12 +29,21 @@ user.deleteUser = function(e) {
 };
 
 user.editUser = function(e) {
-  var id = $(e.target).parent().attr("id");
+  var id = $('#userID').val()
+  // console.log(id);
+  var updateData = {
+    firstName: $('#firstName').val(),
+    lastName: $('#lastName').val(),
+    email: $('#editEmail').val()
+  }
   var ajaxOption = {
     url: '/api/users/' + id,
     type: "PUT",
+    data: updateData,
     success: function(result) {
-      console.log("success");
+      $('#displayFirstName').html(updateData.firstName)
+      $('#displayLastName').html(updateData.lastName)
+      $('#displayEmail').html(updateData.email)
     }
   };
   $.ajax(ajaxOption);
