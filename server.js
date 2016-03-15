@@ -14,9 +14,11 @@ var express 	   	= require('express'),
 	cookieParser   	= require("cookie-parser");
 	passport       	= require('passport');
 	bcrypt 			= require('bcrypt');
+	// session 		= require("express-session");
+	db 				= require("./models/user");
 
 //static files from public folder
-app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use( cookieParser() );
 app.use(expressSession({secret: 'mySecretKey'}));

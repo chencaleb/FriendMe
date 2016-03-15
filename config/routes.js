@@ -48,6 +48,8 @@ router.route('/api/users/:id')
 	.delete(usersController.destroy)
 	.put(usersController.update);
 
+router.route('/sessions')
+ 	.post(usersController.login);
 
 
 

@@ -24,8 +24,8 @@ UserSchema.statics.createSecure = function (user, cb) {
     bcrypt.hash(user.password, salt, function (err, hash) {
       // build the user object
       //fix bug remove password part
-      user.passwordDigest=hash;
-      user.password=hash;
+      console.log("creating secure")
+      user.passwordDigest = hash;
       
       // create a new user in the db with hashed password and execute the callback when done
       _this.create(user, cb);
@@ -47,7 +47,7 @@ UserSchema.statics.authenticate = function (email, password, cb) {
       cb(null, user);
     } else {
       // user found, but password incorrect
-      cb("password incorrect", user)
+      cb("password incorrect", user);
     }
   });
 };

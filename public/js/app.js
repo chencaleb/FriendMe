@@ -4,11 +4,28 @@ var user = {};
 user.createUser = function(e) {
 	e.preventDefault();
 	var newUser = $(e.target).serialize();
-  console.log(newUser);
-  $.post("/api/users", newUser)
+  	console.log(newUser);
+  	$.post("/api/users", newUser)
     .done(function(res) {
      var id = JSON.parse(res)._id;
   	 window.location.href = '/api/users/' + id;
+  })
+    .fail(function(err) {
+      console.log("Error", err);
+    });  
+};
+
+user.loginUser = function(e) {
+	console.log("yay")
+	e.preventDefault();
+	var newUser = $(e.target).serialize();
+	console.log("newUser is " + newUser);
+  	$.post("/sessions", newUser)
+    .done(function(req, res) {
+    console.log("user logged in");
+    //  var id = req.body._id;
+    //  console.log(id);
+  	 window.location.href = '/destinations';
   })
     .fail(function(err) {
       console.log("Error", err);
