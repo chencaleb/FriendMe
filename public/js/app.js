@@ -35,6 +35,7 @@ user.editUser = function(e) {
     firstName: $('#firstName').val(),
     lastName: $('#lastName').val(),
     email: $('#editEmail').val(),
+    firstName: $('#firstName').val(),
     photoUrl: $('#photoUrl').val(),
   }
   var ajaxOption = {
@@ -45,6 +46,7 @@ user.editUser = function(e) {
       $('#displayFirstName').html(updateData.firstName)
       $('#displayLastName').html(updateData.lastName)
       $('#displayEmail').html(updateData.email)
+      $('#headerFirstName').html(updateData.firstName)
       $('#displayPhotoUrl').html(updateData.photoUrl)
     }
   };
