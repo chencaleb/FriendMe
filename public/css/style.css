@@ -45,9 +45,9 @@ body {
 }
 
 .btn-primary {
-    background-color: gray;
-/*  background-color: #323B3D;
-*/  border-color: white;
+   /* background-color: gray;*/
+  background-color: #323B3D;
+  border-color: white;
 }
 .btn-lg:hover {
    /* background-color: #323B3D;*/
@@ -57,23 +57,14 @@ body {
 }
 
 .btn-primary:hover {
-  /*background-color: gray;*/
-  background-color: #323B3D;
+  background-color: gray;
+ /* background-color: #323B3D;*/
   color: white;
 /*  color: #204d74;*/
 }
 .navbar-default .navbar-nav>li>a {
   color: #404F52
 }
-
-/*#center {
-  text-align: center;
-  display: block;
-}
-
-#login_button {
-  margin: 0% auto;
-}*/
 
 .jumbotron { 
   padding-top: 2%;
@@ -144,6 +135,7 @@ body {
 }
 
 #profile_image {
+  width: 30%;
   margin: 0% auto;
   display: block;
 }
@@ -163,22 +155,24 @@ body {
   text-align: center;
 }
 
-
-
 /*destinations*/
+
+.cityImg {
+  width: 100%;
+  height: 14em;
+}
 
 .city {
   float: left;
-  width:25%;
-  height: 25em;
+  width: 25%;
+  height: 20em;
   margin-left: 6%;
-  margin-top: 12%;
+  margin-top: 5%;
 }
+
 .city:hover {
- 
   opacity: 0.4;
   cursor: pointer;
-
 }
 
 .citiesContainer {
@@ -186,8 +180,11 @@ body {
 
 }
 
+.panel {
+  margin-bottom: 0%;
+}
+
 .panel-body {
- 
     background-color: #000;
     color: #fff;
     text-align: center;

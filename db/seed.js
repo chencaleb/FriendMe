@@ -3,6 +3,7 @@ var conn = mongoose.connect('mongodb://localhost/friendme');
 console.log('connected');
 var User = require('../models/user');
 
+
 User.remove({}, function(err) {
 	if(err) {
 		console.log("ERROR ", err);

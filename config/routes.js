@@ -1,5 +1,3 @@
-
-
 var express 		= require('express'),
 	app 			= express(),
 	mongoose 		= require('mongoose'),
@@ -11,6 +9,8 @@ var express 		= require('express'),
 	cookieParser   	= require("cookie-parser");
 	passport       	= require('passport');
 	usersController = require('../controllers/users');
+	postsController = require('../controllers/posts');
+	destinationsController = require('../controllers/destinations');
 
 var	router = express.Router();
 
@@ -31,6 +31,7 @@ router.get('/destinations', function(req, res) {
 	res.render("destination");
 });
 
+
 /*
  * JSON API Endpoints
  */
@@ -38,17 +39,29 @@ router.get('/destinations', function(req, res) {
 router.route('/api')
 	.get(usersController.apiRoot);
 
+
+	// USER Controller Routes
 router.route('/api/users')
 	.get(usersController.apiIndex)
 	.post(usersController.create);
 	
 router.route('/api/users/:id')
-	// Show User
 	.get(usersController.show)
 	.delete(usersController.destroy)
 	.put(usersController.update);
 
+	// POST Controller Routes
+// router.route('/api/posts')
+// 	.get(postsController.apiPosts);
 
+
+	//DESTINATION Controller Routes
+router.route('/api/destinations')
+	.get(destinationsController.index)
+	.get(destinationsController.destinationIndex);
+
+// router.route('/api/destinations/:id')
+// 	.get(destinationsController.show);
 
 
 

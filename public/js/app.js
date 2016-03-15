@@ -1,4 +1,5 @@
 var user = {};
+var destination = {};
 
 // post method
 user.createUser = function(e) {
@@ -53,11 +54,6 @@ user.editUser = function(e) {
   $.ajax(ajaxOption);
 };
 
-$('#updateUser').keypress(function(event) {
-  if (event.which === 13) {
-    console.log("ENTER");
-  }
-});
 
 user.renderUser = function(user) {
   var showUser = user;
@@ -68,16 +64,17 @@ user.renderUser = function(user) {
   $profilePage.append(compiledHTML);
 };
 
+
+
+
+
+
 uploadcare.openDialog().done(function(file) {
   file.promise().done(function(fileInfo){
     console.log(fileInfo.cdnUrl);
   });
 });
-
-$('#modalButton').on('click', function() {
-    //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
-    $('#triggerModal').modal();
-});
+  
 
 $('#modalButtonLogin').on('click', function() {
     //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL

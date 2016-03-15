@@ -1,18 +1,18 @@
 //SERVER SIDE JAVASCRIPT
 
-var express 	   	= require('express'),
+var express 	= require('express'),
 	app 		   	= express(),
-	mongoose 	   	= require('mongoose'),
-	bodyParser     	= require('body-parser'),
-	methodOverride 	= require('method-override'),
+	mongoose 	  = require('mongoose'),
+	bodyParser  = require('body-parser'),
+	methodOverride = require('method-override'),
 	hbs 		   	= require('hbs'),
 	hbsutils 		= require('hbs-utils')(hbs),
-	path 			= require('path'),
+	path 			  = require('path'),
 	logger 			= require('morgan'),
 	routes 			= require('./config/routes');
-	expressSession 	= require('express-session');
-	cookieParser   	= require("cookie-parser");
-	passport       	= require('passport');
+	expressSession = require('express-session');
+	cookieParser = require("cookie-parser");
+	passport     = require('passport');
 
 //static files from public folder
 app.use( cookieParser() );
