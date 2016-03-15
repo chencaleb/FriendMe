@@ -34,7 +34,8 @@ user.editUser = function(e) {
   var updateData = {
     firstName: $('#firstName').val(),
     lastName: $('#lastName').val(),
-    email: $('#editEmail').val()
+    email: $('#editEmail').val(),
+    photoUrl: $('#photoUrl').val(),
   }
   var ajaxOption = {
     url: '/api/users/' + id,
@@ -44,20 +45,32 @@ user.editUser = function(e) {
       $('#displayFirstName').html(updateData.firstName)
       $('#displayLastName').html(updateData.lastName)
       $('#displayEmail').html(updateData.email)
+      $('#displayPhotoUrl').html(updateData.photoUrl)
     }
   };
   $.ajax(ajaxOption);
 };
 
+$('#updateUser').keypress(function(event) {
+  if (event.which === 13) {
+    console.log("ENTER");
+  }
+});
+
 user.renderUser = function(user) {
   var showUser = user;
-  var $profilePage = $('#profile-page');
+  var $profilePage = $('#profile_page');
   $profilePage.html("");
   var userTemplate = Handlebars.compile($('#user-template').html());
   var compiledHTML = userTemplate({user: showUser});
   $profilePage.append(compiledHTML);
 };
 
+uploadcare.openDialog().done(function(file) {
+  file.promise().done(function(fileInfo){
+    console.log(fileInfo.cdnUrl);
+  });
+});
 
 $('#modalButton').on('click', function() {
     //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
@@ -72,3 +85,5 @@ $('#modalButtonLogin').on('click', function() {
 $('#modalEditUser').on('click', function() {
   $('#triggerEditModal').modal();
 });
+
+

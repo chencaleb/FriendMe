@@ -1,4 +1,4 @@
-<div class="jumbotron text-center">
+<div class="jumbotron text-center scroll">
   <h1>Meet new people!</h1>
   <p>Travel with locals</p>
   <!-- Button trigger modal -->
@@ -95,13 +95,14 @@
               <div class="form-group">
                 <label class="col-md-4 control-label" for="photoUrl">Photo</label>
                 <div class="col-md-4">
-                <input id="photoUrl" name="photoUrl" type="file" placeholder="" class="btn btn-default btn-file" required="">
-                </div>
+                <input type="hidden" name="photoUrl" role="uploadcare-uploader" data-image-shrink="240x380" />
+               <!--  <input id="photoUrl" name="photoUrl" type="file" placeholder="" class="btn btn-default btn-file" required="">
+                </div> -->
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
-                <input type="submit" class="btn-default">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" action="/">Close</button>
+                <input type="submit" value="Sign Up" class="btn btn-primary">
                 <!-- <button type="button" class="btn btn-primary" id="saveUser">Save User</button> -->
               </div>
             </form>
