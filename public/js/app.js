@@ -16,15 +16,14 @@ user.createUser = function(e) {
 };
 
 user.loginUser = function(e) {
-	console.log("yay")
 	e.preventDefault();
-	var newUser = $(e.target).serialize();
-	console.log("newUser is " + newUser);
-  	$.post("/sessions", newUser)
+	var user = $(e.target).serialize();
+	console.log("user is " + user);
+  	$.post("/sessions", user)
     .done(function(req, res) {
     console.log("user logged in");
     //  var id = req.body._id;
-    //  console.log(id);
+    //  console.log(id)
   	 window.location.href = '/destinations';
   })
     .fail(function(err) {
@@ -67,16 +66,16 @@ user.renderUser = function(user) {
 };
 
 
-$('#modalButton').on('click', function() {
+$('#signupModal').on('click', function() {
     //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
     $('#triggerModal').modal();
 });
 
-$('#modalButtonLogin').on('click', function() {
+$('#modalLoginButton').on('click', function() {
     //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
     $('#triggerModalLogin').modal();
 });
 
-$('#modalEditUser').on('click', function() {
+$('#editModal').on('click', function() {
   $('#triggerEditModal').modal();
 });

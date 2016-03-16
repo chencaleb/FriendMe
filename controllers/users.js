@@ -1,5 +1,6 @@
 var User = require('../models/user');
 
+
 var usersController = {
 
   index: function(req, res) {
@@ -19,14 +20,23 @@ var usersController = {
   },
 
   create: function(req, res) {
-  	var user = req.body;
-    console.log(req.body);
-    debugger
-  	User.createSecure(user, function(err, user) {
-	  	err ?
-	  		res.status(500).send() :
-	  		res.status(201).send(JSON.stringify(user));
-	  });
+    console.log("creating user");
+  	var user = {};
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.email = req.body.email;
+    user.photoUrl = req.body.photoUrl;
+    user.password = req.body.password;
+  	User.createSecure(user, function(err, userData) {
+      console.log("User data: " + userData);
+      req.login(userData);
+      req.currentUser(function(err, current) {
+        console.log("I am current user", current);
+      });
+      if (err)
+        res.status(500).send();
+        res.status(201).send();
+    });
  },
 
   destroy: function(req, res) {
@@ -37,19 +47,6 @@ var usersController = {
         res.status(500).send() :
         res.status(204).send(JSON.stringify(user));
       });
-  },
-
-  login: function(req, res) {
-    console.log(req.body.id)
-    var user = req.body;
-    var email = user.email;
-    var password = user.password;
-    User.authenticate(email, password, function (err, user) {
-      if (err) {
-        console.log(err);
-      }
-    res.send(email + " is logged in\n");
-  });
   },
 
  	update: function(req, res) {
@@ -70,7 +67,27 @@ var usersController = {
     });
 },
 
-// },
+  loginUser: function(req, res) {
+    console.log("user.js: " + req.body);
+    var email = req.body.email;
+    var password = req.body.password;
+    User.authenticate(email, password, function (err, user) {
+      req.login(user);
+      req.currentUser(function(err, current){
+        console.log("hi", current);
+      });
+      res.status(200).send();
+    });
+  },
+
+  logoutUser: function(req, res) {
+    req.logout();
+    req.currentUser(function(err, current){
+      console.log("bye", current);
+    });
+    res.redirect("/");
+  },
+
 
  apiIndex: function(req, res) {
  	  User.find({}, function(err, users) {

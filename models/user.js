@@ -24,7 +24,7 @@ UserSchema.statics.createSecure = function (user, cb) {
     bcrypt.hash(user.password, salt, function (err, hash) {
       // build the user object
       //fix bug remove password part
-      console.log("creating secure")
+      console.log("creating secure");
       user.passwordDigest = hash;
       
       // create a new user in the db with hashed password and execute the callback when done
