@@ -72,6 +72,7 @@ app.listen(process.env.PORT || 5000, function() {
 	console.log('server is running');
 });
 
+// module.exports = app;
 
 // Setting up the Passport Strategies
 // require("./config/passport")(passport);

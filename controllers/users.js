@@ -12,7 +12,7 @@ var usersController = {
 
   show: function(req, res) {
   	var id = req.params.id;
-    console.log("yser hererrerer:",req.user);
+    console.log("yser hererrerer:", req.user);
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
   		 res.render('./partials/show', {userJS: JSON.stringify(user), user: user});
@@ -69,6 +69,7 @@ var usersController = {
 
   loginUser: function(req, res) {
     console.log("user.js: " + req.body);
+    console.log("logging in " + req);
     var email = req.body.email;
     var password = req.body.password;
     User.authenticate(email, password, function (err, user) {
