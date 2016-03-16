@@ -8,16 +8,27 @@ $(document).ready(function() {
   var destination = {};
   var post = {};
 
-
-// post method
 user.createUser = function(e) {
 	e.preventDefault();
 	var newUser = $(e.target).serialize();
-  console.log(newUser);
-  $.post("/api/users", newUser)
-    .done(function(res) {
-     var id = JSON.parse(res)._id;
+  	console.log(newUser);
+  	$.post("/api/users", newUser)
+    .done(function(req, res) {
+     var id = req._id;
+     console.log('create user was successful!', id);
   	 window.location.href = '/api/users/' + id;
+  })
+    .fail(function(err) {
+      console.log("Error", err);
+    });  
+};
+
+user.loginUser = function(e) {
+	e.preventDefault();
+	var user = $(e.target).serialize();
+  	$.post("/sessions", user)
+    .done(function(req, res) {
+  	 window.location.href = '/destinations';
   })
     .fail(function(err) {
       console.log("Error", err);
@@ -38,25 +49,24 @@ user.deleteUser = function(e) {
 };
 
 user.editUser = function(e) {
-  var id = $('#userID').val()
+  var id = $('#userID').val();
+
   // console.log(id);
   var updateData = {
     firstName: $('#firstName').val(),
     lastName: $('#lastName').val(),
     email: $('#editEmail').val(),
-    firstName: $('#firstName').val(),
-    photoUrl: $('#photoUrl').val(),
-  }
+  };
+
   var ajaxOption = {
     url: '/api/users/' + id,
     type: "PUT",
     data: updateData,
     success: function(result) {
-      $('#displayFirstName').html(updateData.firstName)
-      $('#displayLastName').html(updateData.lastName)
-      $('#displayEmail').html(updateData.email)
-      $('#headerFirstName').html(updateData.firstName)
-      $('#displayPhotoUrl').html(updateData.photoUrl)
+      $('#displayFirstName').html(updateData.firstName);
+      $('#displayLastName').html(updateData.lastName);
+      $('#displayEmail').html(updateData.email);
+      $('#headerFirstName').html(updateData.firstName);
     }
   };
   $.ajax(ajaxOption);
@@ -72,11 +82,9 @@ user.renderUser = function(user) {
   $profilePage.append(compiledHTML);
 };
 
-
-
 ///////POST/////////
 post.createPost = function(e) {
-  console.log("clicked")
+  console.log("clicked");
 
   e.preventDefault();
   var newPost = $(e.target).serialize();
@@ -84,7 +92,7 @@ post.createPost = function(e) {
   $.post("/api/posts", newPost)
     .done(function(res) {
      var id = JSON.parse(res)._id;
-     window.location.href = '/api/posts/'
+     window.location.href = '/api/posts/';
   })
     .fail(function(err) {
       console.log("Error", err);
@@ -101,7 +109,7 @@ post.editPost = function(e) {
     interests: $('#interests').val(),
     // email: $('#email').val(),
     description: $('#description').val(),
-  }
+  };
 
   var ajaxOption = {
     url: '/api/posts/' + id,
@@ -109,11 +117,11 @@ post.editPost = function(e) {
     dataType: 'json',
     data: updateData,
     success: function(res) {
-      console.log("UPDATED DATA", updateData)
+      console.log("UPDATED DATA", updateData);
       // $('savedPost').html(response);
-      $('#postInterests').html(updateData.interests)
+      $('#postInterests').html(updateData.interests);
       // $('#postEmail').html(updateData.email)
-      $('#postDescription').html(updateData.description)
+      $('#postDescription').html(updateData.description);
       $('#editForm').hide();
       // $('#displayPhotoUrl').html(updateData.photoUrl)
     }
@@ -137,7 +145,7 @@ post.deletePost = function(e) {
     url: '/api/posts/' + id,
     type: "DELETE",
     success: function(result) {
-      console.log('DELETED')
+      console.log('DELETED');
       $("#" + id).remove();
       window.location.href = '/api/posts';
     }
@@ -145,22 +153,15 @@ post.deletePost = function(e) {
   $.ajax(ajaxOption);
 };
 
+//USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
+$('#signupModal').on('click', function() {
+    $('#triggerModal').modal();
+});
 
-// uploadcare.openDialog().done(function(file) {
-//   file.promise().done(function(fileInfo){
-//     console.log(fileInfo.cdnUrl);
-//   });
-// });
-  
+$('#modalLoginButton').on('click', function() {
+    $('#triggerModalLogin').modal();
+});
 
-  $('#modalButtonLogin').on('click', function() {
-      //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
-      $('#triggerModalLogin').modal();
-  });
-
-  $('#modalEditUser').on('click', function() {
-    $('#triggerEditModal').modal();
-  });
-
-
-
+$('#editModal').on('click', function() {
+  $('#triggerEditModal').modal();
+});
