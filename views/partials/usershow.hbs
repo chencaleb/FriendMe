@@ -1,16 +1,20 @@
-<div id="profile-page"></div>
-
-
+<div id="profile_page"></div>
 
  <script id="user-template" type="text/x-handlbars-template">
-  <h1> \{{user.firstName}} </h1>
-    <div id="\{{user._id}}" class="profile">
-      <img src="\{{user.photoUrl}}" alt="profile pic" id="profile_image">
-        <p>Name: <span id="displayFirstName"> \{{user.firstName}} </span> <span id="displayLastName">\{{user.lastName}}</span></p>
-        <p> Email:<span id="displayEmail"> \{{user.email}}</span> </p>
-      <button class="btn btn-primary btn-md" id="modalEditUser"  data-toggle="modal" data-target="#triggerEditModal">Edit</button>
-      <button class= "btn delete-btn" onclick="user.deleteUser(event)">Delete</button>
+
+    <h1><span id="headerFirstName">\{{user.firstName}}</span> </h1>
+
+        <div id="\{{user._id}}" class="profile">
+            <img src="\{{user.photoUrl}}"alt="profile pic" id="profile_image">
+            <p> Name: <span id="displayFirstName"> \{{user.firstName}}</span> </p> 
+        <p> <span id="displayLastName">\{{user.lastName}}</span> </p>
+              <p> Email: <span id="displayEmail"> \{{user.email}}</span> </p>
+
+      <button class="btn btn-primary" id="modalEditUser"  data-toggle="modal" data-target="#triggerEditModal">Edit</button>
+            <button class= "btn btn-primary" onclick="user.deleteUser(event)">Delete</button>
     </div>
+    <!--   <button class= "btn btn-primary" onclick="user.createPost(event)">Add a Post</button> -->
+
 </script> 
 
 <script type="text/javascript">
@@ -18,8 +22,6 @@
 </script>
 
 
-<!-- <button id="deleteButton" type="submit" class="btn btn-primary btn-lg">Delete</button> -->
-{{!-- </div> --}}
 <!-- begin userModal: this is not visible until you call .modal() on it -->
     <div class="modal fade" tabindex="-1" role="dialog" id="triggerEditModal">
       <div class="modal-dialog">
@@ -79,15 +81,16 @@
 
               <!-- Text input-->
               <div class="form-group">
+              <div class="form-group">
                 <label class="col-md-4 control-label" for="photoUrl">Photo</label>
                 <div class="col-md-4">
-                <input id="photoUrl" name="photoUrl" type="file" value="{{user.photoUrl}}" class="btn btn-default btn-file" required="">
+                <input id="uploadCare" type="hidden" name="photoUrl" role="uploadcare-uploader" value="{{user.photoUrl}}"/>
+                <input id="photoUrl" name="photoUrl" type="file" value="{{user.photoUrl}}" class="btn btn-default btn-file">
                 </div>
               </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
-
                 <button type="button" class="btn btn-primary" onclick="user.editUser(event)" data-dismiss="modal" id="saveUser">Save</button>
               </div>
             </form>

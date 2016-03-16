@@ -1,9 +1,16 @@
 html body {width: 100%; height: 100%;}
 
+body {
+  font-family: 'Ubuntu', sans-serif;
+  overflow-y:scroll;
+/*  font-size: 1em;*/
+}
+
 .navbar {
-	background-color: gray;
-	height: 6em;
-    z-index: 1
+  padding: 1% 0% 3% 0%;
+	background-color: #323B3D;
+	height: 4em;
+  z-index: 1;
 }
 
 .jumbotron1 { 
@@ -11,25 +18,65 @@ html body {width: 100%; height: 100%;}
 }
 
 .navbar a{
+   /* #323B3D; dark gray*/
     color: #fff!important;
+    font-weight: bold;
 }
 
 .navbar a:hover{
-    color: #000!important;
-   
+    color: gray!important;
+    font-size: 1.4em;
+   /*-webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: gray;*/
 }
 
+#friendMe:hover{
+    color: gray!important;
+    font-size: 1.8em;
+}
+
+#friendMe {
+  font-size: 1.5em;
+}
+
+.sign_up_button {
+  padding: .4% 4%;
+}
+
+.btn-lg {
+  border-outline: 1px solid black;
+  padding: .4% 4%;
+  background-color: #323B3D;
+}
+
+.btn-primary {
+   /* background-color: gray;*/
+  background-color: #323B3D;
+  border-color: white;
+}
 .btn-lg:hover {
-    background-color: #EAFD61;
-    color: #279EA2;
+   /* background-color: #323B3D;*/
+    background-color: gray;
+ /*   background-color: #EAFD61;*/
+    color: white;
+}
+
+.btn-primary:hover {
+  background-color: gray;
+ /* background-color: #323B3D;*/
+  color: white;
+/*  color: #204d74;*/
+}
+.navbar-default .navbar-nav>li>a {
+  color: #404F52
 }
 
 .jumbotron { 
-	padding-top: 2%;
-	height: 40em; 
-	background-image: url('/images/jumbotronimage.png');
-	background-size: cover;
-	color: #fff;
+  padding-top: 2%;
+  height: 40em; 
+  background-image: url('/images/jumbotronimage.png');
+  background-size: cover;
+  color: #fff;
 }
 
 #modalButtonLogin {
@@ -59,8 +106,13 @@ html body {width: 100%; height: 100%;}
 }
 
 .fixed {
+  margin-top: 0%;
   position: fixed;
   width: 100%;
+}
+
+.jumbotron h1{
+  margin-top: 15%;
 }
 
 .jumbotron1 h1{
@@ -75,10 +127,16 @@ html body {width: 100%; height: 100%;}
     background-color: red;
 }
 
+.h1, .h2, .h3, h1, h2, h3 {
+  margin-top: 0%;
+}
+
+
 .btn-file {
   position: relative;
   overflow: hidden;
 }
+
 .btn-file input[type=file] {
     position: absolute;
     top: 0;
@@ -94,8 +152,47 @@ html body {width: 100%; height: 100%;}
     cursor: inherit;
     display: block;
 }
+/*profile page */
 
+#profile {
+  width: 60%;
+  margin: 0% auto;
+}
+
+#profile_page {
+  padding-top: 10%;
+  display: block;
+  text-align: center;
+}
+
+#profile_image {
+  width: 30%;
+  margin: 0% auto;
+  display: block;
+}
+
+
+/*welcome page */
+.welcome_content_div {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.content_h2 {
+  text-align: center;
+}
+
+.content_p {
+  text-align: center;
+}
+
+/*destinations*/
 /* Sticky footer styles */
+
+.cityImg {
+  width: 100%;
+  height:14em;
+}
 html {
   position: relative;
   min-height: 100%;
@@ -218,22 +315,23 @@ footer .footer-below {
 
 /*destinations*/
 .city {
-    float: left;
-    width:25%;
-    height: 25em;
-    margin-left: 6%;
-    margin-top: 12%;
+  float: left;
+  width: 25%;
+  height: 20em;
+  margin-left: 6%;
+  margin-top: 5%;
 }
 
 .city:hover {
- 
-    opacity: 0.4;
-    cursor: pointer;
+  opacity: 0.4;
+  cursor: pointer;
+}
 
+.panel {
+  margin-bottom: 0%;
 }
 
 .panel-body {
- 
     background-color: #000;
     color: #fff;
     text-align: center;

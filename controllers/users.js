@@ -14,7 +14,7 @@ var usersController = {
   	var id = req.params.id;
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
-  		 res.render('./partials/show', {userJS: JSON.stringify(user), user: user});
+  		 res.render('../views/partials/usershow', {userJS: JSON.stringify(user), user: user});
   	});
   },
 
@@ -89,8 +89,7 @@ var usersController = {
     });
     res.redirect("/");
   },
-
-
+  
  apiIndex: function(req, res) {
  	  User.find({}, function(err, users) {
       res.status(200).send(JSON.stringify(users));
