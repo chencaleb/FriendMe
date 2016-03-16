@@ -57,8 +57,8 @@ var postsController = {
       console.log("error", err)
 	    err ? 
 	    	res.status(200) :
-        res.render('./partials/postshow', {postJS: JSON.stringify(savedPost), post: savedPost});
-	    	// res.status(200).send(JSON.stringify(savedPost));
+        // res.render('./partials/postshow', {postJS: JSON.stringify(savedPost), post: savedPost});
+	    	res.status(200).send(JSON.stringify(savedPost));
 	  });
 	});
 },

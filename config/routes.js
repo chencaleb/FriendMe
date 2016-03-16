@@ -39,8 +39,7 @@ router.get('/', function(req, res){
 router.route('/api')
 	.get(usersController.apiRoot);
 
-router.route('/api/destinations')
-.get(destinationsController.apiDestinations);
+
 
 /*
  * HTML Endpoints
@@ -60,34 +59,27 @@ router.route('/api/users/:id')
 	///////// POST/////////
 router.route('/api/posts')
 	.get(postsController.index)
-	// .get(postsController.apiPosts)
 	.post(postsController.create);
 
 router.route('/api/posts/new')
 	.get(postsController.new);
-
-// router.route('/api/posts/:id/edit')
-// 	.get(postsController.edit);
 	
 router.route('/api/posts/:id')
 	.get(postsController.show)
-	// .get(postsController.edit)
 	.put(postsController.update)
 	.delete(postsController.destroy);
 	
-
-// router.route('/api/posts')
-// 	.get(postsController.apiPosts);
-
-
-
 
 	///////// DESTINATION /////////
 router.route('/destinations')
 	.get(destinationsController.index);
 
-// router.route('/api/destinations/:id')
-// 	.get(destinationsController.show);
+router.route('/api/destinations')
+	.get(destinationsController.apiDestinations);
+
+
+router.route('/api/destinations/:id')
+	.get(destinationsController.show);
 
 
 

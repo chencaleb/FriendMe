@@ -146,11 +146,12 @@ post.deletePost = function(e) {
 
 // });
 
-uploadcare.openDialog().done(function(file) {
-  file.promise().done(function(fileInfo){
-    console.log(fileInfo.cdnUrl);
-  });
-});
+
+// uploadcare.openDialog().done(function(file) {
+//   file.promise().done(function(fileInfo){
+//     console.log(fileInfo.cdnUrl);
+//   });
+// });
   
 
   $('#modalButtonLogin').on('click', function() {
