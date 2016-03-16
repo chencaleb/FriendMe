@@ -58,6 +58,7 @@ router.route('/api/users/:id')
 
 	///////// POST/////////
 router.route('/api/posts')
+	// .get(postsController.apiPosts)
 	.get(postsController.index)
 	.post(postsController.create);
 

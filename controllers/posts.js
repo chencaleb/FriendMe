@@ -81,5 +81,4 @@ var postsController = {
 	}
 
 
-
 module.exports = postsController;
