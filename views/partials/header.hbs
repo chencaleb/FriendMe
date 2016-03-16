@@ -2,62 +2,75 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">FriendMe</a>
+      <a class="navbar-brand" href="/">FriendMe</a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav navbar-right">
+<<<<<<< HEAD
         <li><a href="#" class="modalButtonLogin">Login</a></li>
+=======
+        <li><a href="#" id="modalButtonLogin" type="button" data-toggle="modal" data-target="#triggerModalLogin">Login</a></li>
+        <li><a href="/sessions" id="modalButtonLogout">Logout</a></li>
+>>>>>>> d9020ab9e54f26d97b0b6fb2f2ec1f9f3fcf55cf
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-
 <!-- begin songModal: this is not visible until you call .modal() on it -->
     <div class="modal fade" tabindex="-1" role="dialog" id="triggerModalLogin">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header ">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">Login</h4>
           </div>
+          
           <div class="modal-body">
             <fieldset class='form-horizontal'>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="email">Email</label>
-              <div class="col-md-4">
-              <input id="email" name="email" type="email" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="password">Password</label>
-              <div class="col-md-4">
-              <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
-
-              </div>
-            </div>
-
-       
-
+             <form id="newUser" onsubmit="user.loginUser(event)">
             
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="email"></label>
+                <div class="col-md-4">
+                <a href="/auth/facebook" type="button" class="btn btn-primary">Login with Facebook</a>
+                </div>
+              </div>
+              <div class="form-group text-center or">
+               <hr><p>or</p><hr>
+              </div>
 
+              <!-- Text input-->
+              <div class="form-group">
 
-            </fieldset>
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                <input id="email" name="email" type="email" placeholder="" class="form-control input-md">
 
+                </div>
+              </div>
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
-            <button type="button" class="btn btn-primary" id="saveSong" method="POST" action="/">Save changes</button>
-          </div>
+              
+              
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="password">Password</label>
+                <div class="col-md-4">
+                <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
+
+                </div>
+              </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
+                <input type="submit" class="btn-default">
+              </div>
+            </form>
+          </fieldset>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

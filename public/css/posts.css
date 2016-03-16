@@ -1,0 +1,37 @@
+.margin-top {
+	padding-top: 10%;
+	margin-left: 20%;
+}
+
+.single_post {
+	display: inline-block;
+	margin: 2%;
+	width: 20%;
+	vertical-align: text-top;
+	/*margin-bottom: 2%;*/
+	border: 1px solid gray;
+}
+
+.description_content {
+	height: 10%;
+}
+
+.profile {
+	margin-left: 20%;
+}
+
+/*.post_container {
+	text-align: center;
+}*/
+
+/*.multiple_posts {
+	text-align: center;
+}*/
+#editForm {
+	display: none;
+}
+
+#addAPost {
+	margin-bottom: 1%;
+	padding-bottom: 1%;
+}
