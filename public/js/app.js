@@ -1,6 +1,13 @@
-var user = {};
-var destination = {};
-var post = {};
+$(document).ready(function() {
+  $("#toggleEditBtn").click(function() {
+    $("#editForm").toggle();
+  });
+});
+
+  var user = {};
+  var destination = {};
+  var post = {};
+
 
 // post method
 user.createUser = function(e) {
@@ -70,7 +77,7 @@ user.renderUser = function(user) {
 ///////POST/////////
 post.createPost = function(e) {
   console.log("clicked")
-  
+
   e.preventDefault();
   var newPost = $(e.target).serialize();
   console.log(newPost);
@@ -84,7 +91,60 @@ post.createPost = function(e) {
     });  
 };
 
+post.editPost = function(e) {
+  var id = $('#postID').val()
 
+  console.log(id);
+
+  var updateData = {
+    interests: $('#interests').val(),
+    // email: $('#email').val(),
+    description: $('#description').val(),
+  }
+
+  var ajaxOption = {
+    url: '/api/posts/' + id,
+    type: "PUT",
+    dataType: 'json',
+    data: updateData,
+    success: function(res) {
+      console.log("UPDATED DATA", updateData)
+      // $('savedPost').html(response);
+      $('#postInterests').html(updateData.interests)
+      // $('#postEmail').html(updateData.email)
+      $('#postDescription').html(updateData.description)
+      // $('#displayPhotoUrl').html(updateData.photoUrl)
+    }
+  };
+  $.ajax(ajaxOption);
+};
+
+post.renderPost = function(post) {
+  var showPost = post;
+  var $postPage = $('#post_page');
+  $postPage.html("");
+  var postTemplate = Handlebars.compile($('#post-template').html());
+  var postHTML = postTemplate({post: showPost});
+  $postPage.append(postHTML);
+};
+
+post.deletePost = function(e) {
+  var id = $(e.target).parent().attr("id");
+  console.log('delete', id);
+  // var ajaxOption = {
+  //   url: '/api/users/' + id,
+  //   type: "DELETE",
+  //   success: function(result) {
+  //     console.log('DELETED')
+  //     $("#" + id).remove();
+  //     window.location.href = '/api/posts';
+  //   }
+  // };
+  // $.ajax(ajaxOption);
+};
+
+
+// });
 
 uploadcare.openDialog().done(function(file) {
   file.promise().done(function(fileInfo){
@@ -93,13 +153,14 @@ uploadcare.openDialog().done(function(file) {
 });
   
 
-$('#modalButtonLogin').on('click', function() {
-    //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
-    $('#triggerModalLogin').modal();
-});
+  $('#modalButtonLogin').on('click', function() {
+      //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
+      $('#triggerModalLogin').modal();
+  });
 
-$('#modalEditUser').on('click', function() {
-  $('#triggerEditModal').modal();
-});
+  $('#modalEditUser').on('click', function() {
+    $('#triggerEditModal').modal();
+  });
+
 
 

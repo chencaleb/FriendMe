@@ -1,0 +1,49 @@
+<h1 class="margin-top"> POSTS SHOW </h1>
+<div id="post_page"></div>
+
+<script id="post-template" type="text/x-handlbars-template">
+
+		<div id="\{{post._id}}" class="profile">
+    		<p>Interests: <span id="postInterests">\{{post.interests}} </span></p>
+			<!--   <p> Email: <span id="postsEmail"> \{{post.email}}</span> </p> -->
+			  <p> Description: <span id="postsDescription">\{{post.description}}</span></p>
+
+			<img src="\{{post.photoUrl}}"alt="image" id="profile_image">
+
+      <button class="btn btn-primary" id="toggleEditBtn" >Edit</button>
+
+			<button class= "btn btn-primary" onclick="post.deletePost(event)">Delete</button>
+    </div>
+</script>
+
+ <script type="text/javascript">
+ 		console.log('post ', post);
+  	post.renderPost({{{postJS}}});
+ </script>
+
+<form class="margin-top" id="editForm">
+
+	<input type="text" hidden=true value={{post.id}} id="postID">
+
+	<div class="row">
+		<label for="interests">Interests:</label><br />
+		<input id="interests" class="input" name="interests" type="text" value="{{post.interests}}" size="40" /><br />
+	</div>
+
+<!-- 	<div class="row">
+		<label for="email">Email:</label><br />
+		<input id="email" class="input" name="email" type="text" value="{{post.email}}" size="30" /><br />
+	</div> -->
+
+	<div class="row">
+		<label for="description">Description:</label><br />
+		<input type="text" id="description" class="input" value="{{post.description}}" name="description" rows="7" cols="30" /><br />
+	</div>
+
+	<button class="btn btn-primary" onclick="post.editPost(event)" type="submit">Update User</button>
+
+</form>
+
+
+
+

@@ -13,7 +13,7 @@ var usersController = {
   	var id = req.params.id;
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
-  		 res.render('./partials/show', {userJS: JSON.stringify(user), user: user});
+  		 res.render('./partials/usershow', {userJS: JSON.stringify(user), user: user});
   	});
   },
 
@@ -47,7 +47,7 @@ var usersController = {
 	    if (req.body.email) user.email = req.body.email;
 	    if (req.body.photoUrl) user.photoUrl = req.body.photoUrl;
 	    if (req.body.passwordDigest) user.passwordDigest = req.body.passwordDigest;
-      console.log("REQ. BODY" , req);
+        console.log("REQ. BODY" , req);
 	    user.save(function(err, savedUser) {
         // console.log("saved user***", savedUser);
 	      err ? 
@@ -55,7 +55,7 @@ var usersController = {
 	      	res.json(savedUser)
       });
     });
-},
+  },
 
 // },
 

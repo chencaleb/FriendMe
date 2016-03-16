@@ -7,6 +7,7 @@ var PostSchema = new Schema({
 	description: String,
 	interests: String,
 	email: String,
+	photoUrl: String,
 	users: [{ type: Schema.ObjectId, ref: "User"}],
 	destinations: [{ type: Schema.ObjectId, ref: "Destination"}]
 });
