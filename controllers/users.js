@@ -14,7 +14,7 @@ var usersController = {
   	var id = req.params.id;
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
-  		 res.render('./partials/usershow', {userJS: JSON.stringify(user), user: user});
+  		 res.render('../views/partials/usershow', {userJS: JSON.stringify(user), user: user});
   	});
   },
 

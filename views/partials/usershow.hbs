@@ -1,12 +1,19 @@
-<div id="profile-page"></div>
- <script id="user-template" type="text/x-handlbars-template"><h1> \{{user.firstName}} </h1>
-    <div id="\{{user._id}}" class="profile">
-      <img src="\{{user.photoUrl}}" alt="profile pic" id="profile_image">
-        <p>Name: <span id="displayFirstName"> \{{user.firstName}} </span> <span id="displayLastName">\{{user.lastName}}</span></p>
-        <p> Email:<span id="displayEmail"> \{{user.email}}</span> </p>
-      <button class="btn btn-primary btn-md" id="modalEditUser"  data-toggle="modal" data-target="#triggerEditModal">Edit</button>
-      <button class= "btn delete-btn" onclick="user.deleteUser(event)">Delete</button>
+<div id="profile_page"></div>
+
+ <script id="user-template" type="text/x-handlbars-template">
+
+    <h1><span id="headerFirstName">\{{user.firstName}}</span> </h1>
+
+        <div id="\{{user._id}}" class="profile">
+            <img src="\{{user.photoUrl}}"alt="profile pic" id="profile_image">
+            <p> Name: <span id="displayFirstName"> \{{user.firstName}}</span> </p> 
+        <p> <span id="displayLastName">\{{user.lastName}}</span> </p>
+              <p> Email: <span id="displayEmail"> \{{user.email}}</span> </p>
+
+      <button class="btn btn-primary" id="modalEditUser"  data-toggle="modal" data-target="#triggerEditModal">Edit</button>
+            <button class= "btn btn-primary" onclick="user.deleteUser(event)">Delete</button>
     </div>
+    <!--   <button class= "btn btn-primary" onclick="user.createPost(event)">Add a Post</button> -->
 
 </script> 
 
