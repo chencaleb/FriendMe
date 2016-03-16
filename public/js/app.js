@@ -1,5 +1,6 @@
 var user = {};
 var destination = {};
+var post = {};
 
 // post method
 user.createUser = function(e) {
@@ -66,6 +67,22 @@ user.renderUser = function(user) {
 
 
 
+///////POST/////////
+post.createPost = function(e) {
+  console.log("clicked")
+  
+  e.preventDefault();
+  var newPost = $(e.target).serialize();
+  console.log(newPost);
+  $.post("/api/posts", newPost)
+    .done(function(res) {
+     var id = JSON.parse(res)._id;
+     window.location.href = '/api/posts/'
+  })
+    .fail(function(err) {
+      console.log("Error", err);
+    });  
+};
 
 
 

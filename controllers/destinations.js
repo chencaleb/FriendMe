@@ -1,5 +1,4 @@
 var Destination = require('../models/destination');
-console.log("HI");
 
 var destinationsController = {
 
@@ -19,7 +18,7 @@ var destinationsController = {
   // 	});
   // },
 
-	 destinationIndex: function(req, res) {
+	 apiDestinations: function(req, res) {
 	     Destination.find({}, function(err, destinations) {
 	     	console.log(destinations);
 	     	err ?

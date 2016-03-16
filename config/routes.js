@@ -27,9 +27,9 @@ router.get('/', function(req, res){
 });
 
 //index page
-router.get('/destinations', function(req, res) {
-	res.render("destination");
-});
+// router.get('/destinations', function(req, res) {
+// 	res.render("destination");
+// });
 
 
 /*
@@ -39,8 +39,14 @@ router.get('/destinations', function(req, res) {
 router.route('/api')
 	.get(usersController.apiRoot);
 
+router.route('/api/destinations')
+.get(destinationsController.apiDestinations);
 
-	// USER Controller Routes
+/*
+ * HTML Endpoints
+ */
+
+	///////// USER/////////
 router.route('/api/users')
 	.get(usersController.apiIndex)
 	.post(usersController.create);
@@ -50,15 +56,23 @@ router.route('/api/users/:id')
 	.delete(usersController.destroy)
 	.put(usersController.update);
 
-	// POST Controller Routes
+
+	///////// POST/////////
+
+router.route('/posts/new')
+	.get(postsController.new);
+	
+router.route('/api/posts')
+	.get(postsController.apiPosts)
+	.post(postsController.create)
+	.get(postsController.index);
+
 // router.route('/api/posts')
 // 	.get(postsController.apiPosts);
 
-
-	//DESTINATION Controller Routes
-router.route('/api/destinations')
-	.get(destinationsController.index)
-	.get(destinationsController.destinationIndex);
+	///////// DESTINATION /////////
+router.route('/destinations')
+	.get(destinationsController.index);
 
 // router.route('/api/destinations/:id')
 // 	.get(destinationsController.show);
