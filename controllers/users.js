@@ -1,5 +1,5 @@
 var User = require('../models/user');
-
+var session = require('express-session');
 
 var usersController = {
 
@@ -68,16 +68,23 @@ var usersController = {
 },
 
   loginUser: function(req, res) {
-    console.log("user.js: " + req.body);
-    console.log("logging in " + req);
+    console.log("user.js: ", req.body);
+    // console.log("logging in ", req);
     var email = req.body.email;
     var password = req.body.password;
+    // var user = {email: email, password: password};
     User.authenticate(email, password, function (err, user) {
-      req.login(user);
-      req.currentUser(function(err, current){
-        console.log("hi", current);
-      });
-      res.status(200).send();
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+      } else {
+        console.log("USER ", user);
+        req.login(user);
+        req.currentUser(function(err, current){
+          console.log("hi", current);
+        });
+        res.status(200).send();
+      }
     });
   },
 

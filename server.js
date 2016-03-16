@@ -7,13 +7,12 @@ var express 	   	= require('express'),
 	methodOverride 	= require('method-override'),
 	hbs 		   	= require('hbs'),
 	hbsutils 		= require('hbs-utils')(hbs),
-	path 			= require('path'),
+	path 			  = require('path'),
 	logger 			= require('morgan'),
-	routes 			= require('./config/routes'),
 	bcrypt 			= require('bcrypt'),
 	session 		= require("express-session"),
 	keygen			= require('keygenerator'),
-	User 			= require("./models/user");
+	User 			  = require("./models/user");
 	// cookieParser   	= require("cookie-parser");
 	// passport       	= require('passport');
 
@@ -21,7 +20,6 @@ var express 	   	= require('express'),
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(logger('dev'));
 app.use(methodOverride('__method'));
-app.use(routes);
 
 //set view engine
 app.set('view engine', 'hbs');
@@ -33,7 +31,6 @@ hbsutils.registerWatchedPartials(__dirname + '/views/partials');
 // app.use(expressSession({secret: 'mySecretKey'}));
 // app.use(passport.initialize());
 // app.use(passport.session());
-
 
 
 // create the session
@@ -68,11 +65,17 @@ app.use(function(req, res, next){
   next();
 });
 
+//routes
+var routes = require('./config/routes');
+
+app.use(routes);
+
+
 app.listen(process.env.PORT || 5000, function() {
 	console.log('server is running');
 });
 
-// module.exports = app;
+module.exports = app;
 
 // Setting up the Passport Strategies
 // require("./config/passport")(passport);

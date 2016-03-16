@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost/friendme');
  */
  
 //welcome Page
-router.get('/', function(req, res){
+router.route('/').get(function(req, res){
   res.render('welcome', {user: req.user});
 });
 

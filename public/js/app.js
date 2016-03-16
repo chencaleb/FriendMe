@@ -17,6 +17,7 @@ user.createUser = function(e) {
 
 user.loginUser = function(e) {
 	e.preventDefault();
+  console.log("e is ", e);
 	var user = $(e.target).serialize();
 	console.log("user is " + user);
   	$.post("/sessions", user)
