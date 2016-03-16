@@ -12,7 +12,6 @@ var usersController = {
 
   show: function(req, res) {
   	var id = req.params.id;
-    console.log("yser hererrerer:", req.user);
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
   		 res.render('./partials/show', {userJS: JSON.stringify(user), user: user});
@@ -20,7 +19,7 @@ var usersController = {
   },
 
   create: function(req, res) {
-    console.log("creating user");
+    console.log("Creating user");
   	var user = {};
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
@@ -28,14 +27,11 @@ var usersController = {
     user.photoUrl = req.body.photoUrl;
     user.password = req.body.password;
   	User.createSecure(user, function(err, userData) {
-      console.log("User data: " + userData);
       req.login(userData);
       req.currentUser(function(err, current) {
-        console.log("I am current user", current);
+        if (err) res.status(500).send();
+        res.status(201).send(current);
       });
-      if (err)
-        res.status(500).send();
-        res.status(201).send();
     });
  },
 
@@ -43,10 +39,12 @@ var usersController = {
 
     User.remove({_id: req.params.id}, function(err, user) {
       console.log(req.params.id);
-      err ? 
-        res.status(500).send() :
+      if(err) {
+        res.status(500).send();
+      } else {
         res.status(204).send(JSON.stringify(user));
-      });
+      }
+    });
   },
 
  	update: function(req, res) {
@@ -60,28 +58,26 @@ var usersController = {
 	    if (req.body.passwordDigest) user.passwordDigest = req.body.passwordDigest;
 
 	    user.save(function(err, savedUser) {
-	      err ? 
-	      	res.status(200) :
-	      	res.json(savedUser)
+
+        if (err) {
+          res.status(200);
+        } else {
+          res.json(savedUser);
+        }
       });
     });
-},
+  },
 
   loginUser: function(req, res) {
-    console.log("user.js: ", req.body);
-    // console.log("logging in ", req);
     var email = req.body.email;
     var password = req.body.password;
-    // var user = {email: email, password: password};
     User.authenticate(email, password, function (err, user) {
       if (err) {
         console.log(err);
         res.status(500).send();
       } else {
-        console.log("USER ", user);
         req.login(user);
         req.currentUser(function(err, current){
-          console.log("hi", current);
         });
         res.status(200).send();
       }
@@ -91,7 +87,6 @@ var usersController = {
   logoutUser: function(req, res) {
     req.logout();
     req.currentUser(function(err, current){
-      console.log("bye", current);
     });
     res.redirect("/");
   },
@@ -110,8 +105,6 @@ var usersController = {
       base_url: "http://friendMe.herokuapp.com",
       endpoints: [
         {method: "GET", path: "/api", description: "Describes available endpoints"}
-        // {method: "GET", path: "/api/users", description: "Shows all users"},
-        // {method: "GET", path: "/api/users/:id", description: "Shows specified user"}
       ]
     });
   }
@@ -120,6 +113,5 @@ var usersController = {
 function returnError (err) {
   return console.log(err);
 }
-
 
 module.exports = usersController;

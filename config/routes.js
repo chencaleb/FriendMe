@@ -7,13 +7,10 @@ var express 		= require('express'),
 	logger 			= require('morgan'),
 	expressSession 	= require('express-session'),
 	cookieParser   	= require("cookie-parser"),
-	// passport       	= require('passport');
-	usersController = require('../controllers/users');
-
-var	router = express.Router();
-
+	usersController = require('../controllers/users'),
+	router = express.Router();
+	
 mongoose.connect('mongodb://localhost/friendme');
-
 
 /*
  * HTML Endpoints
@@ -22,10 +19,6 @@ mongoose.connect('mongodb://localhost/friendme');
 //welcome Page
 router.route('/').get(function(req, res){
   res.render('welcome', {user: req.user});
-});
-
-router.get('/hello', function(req, res) {
-	res.render('hello');
 });
 
 //index page
@@ -55,9 +48,5 @@ router.route('/api/users/:id')
 router.route('/sessions')
  	.post(usersController.loginUser)
  	.get(usersController.logoutUser);
-
-
-
-
 
 module.exports = router;

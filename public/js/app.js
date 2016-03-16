@@ -1,13 +1,14 @@
 var user = {};
 
-// post method
 user.createUser = function(e) {
 	e.preventDefault();
 	var newUser = $(e.target).serialize();
   	console.log(newUser);
   	$.post("/api/users", newUser)
-    .done(function(res) {
-     var id = JSON.parse(res)._id;
+    .done(function(req, res) {
+     debugger;
+     var id = req._id;
+     console.log('create user was successful!', id);
   	 window.location.href = '/api/users/' + id;
   })
     .fail(function(err) {
@@ -17,14 +18,9 @@ user.createUser = function(e) {
 
 user.loginUser = function(e) {
 	e.preventDefault();
-  console.log("e is ", e);
 	var user = $(e.target).serialize();
-	console.log("user is " + user);
   	$.post("/sessions", user)
     .done(function(req, res) {
-    console.log("user logged in");
-    //  var id = req.body._id;
-    //  console.log(id)
   	 window.location.href = '/destinations';
   })
     .fail(function(err) {
@@ -67,13 +63,12 @@ user.renderUser = function(user) {
 };
 
 
+//USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
 $('#signupModal').on('click', function() {
-    //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
     $('#triggerModal').modal();
 });
 
 $('#modalLoginButton').on('click', function() {
-    //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
     $('#triggerModalLogin').modal();
 });
 
