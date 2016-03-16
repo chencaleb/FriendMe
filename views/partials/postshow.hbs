@@ -6,7 +6,7 @@
 		<div id="\{{post._id}}" class="profile">
     		<p>Interests: <span id="postInterests">\{{post.interests}} </span></p>
 			<!--   <p> Email: <span id="postsEmail"> \{{post.email}}</span> </p> -->
-			  <p> Description: <span id="postsDescription">\{{post.description}}</span></p>
+			  <p> Description: <span id="postDescription">\{{post.description}}</span></p>
 
 			<img src="\{{post.photoUrl}}"alt="image" id="profile_image">
 
@@ -21,7 +21,7 @@
   	post.renderPost({{{postJS}}});
  </script>
 
-<form class="margin-top"  id="editForm">
+<form class="margin-top" id="editForm">
 
 	<input type="text" hidden=true value={{post.id}} id="postID">
 
@@ -37,7 +37,7 @@
 
 	<div class="row">
 		<label for="description">Description:</label><br />
-		<textarea type="text" id="description" class="input" value="{{post.description}}" name="description" rows="3" cols="30"></textarea> <br />
+		<textarea type="text" id="description" class="input" name="description" rows="3" cols="30">{{post.description}}</textarea> <br />
 	</div>
 
 	<button class="btn btn-primary" onclick="post.editPost(event)" type="submit" id="updateBtn">Update User</button>

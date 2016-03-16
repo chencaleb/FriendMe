@@ -92,7 +92,8 @@ post.createPost = function(e) {
 };
 
 post.editPost = function(e) {
-  var id = $('#postID').val()
+  e.preventDefault();
+  var id = $('#postID').val();
 
   console.log(id);
 
@@ -113,6 +114,7 @@ post.editPost = function(e) {
       $('#postInterests').html(updateData.interests)
       // $('#postEmail').html(updateData.email)
       $('#postDescription').html(updateData.description)
+      $('#editForm').hide();
       // $('#displayPhotoUrl').html(updateData.photoUrl)
     }
   };
@@ -131,16 +133,16 @@ post.renderPost = function(post) {
 post.deletePost = function(e) {
   var id = $(e.target).parent().attr("id");
   console.log('delete', id);
-  // var ajaxOption = {
-  //   url: '/api/users/' + id,
-  //   type: "DELETE",
-  //   success: function(result) {
-  //     console.log('DELETED')
-  //     $("#" + id).remove();
-  //     window.location.href = '/api/posts';
-  //   }
-  // };
-  // $.ajax(ajaxOption);
+  var ajaxOption = {
+    url: '/api/posts/' + id,
+    type: "DELETE",
+    success: function(result) {
+      console.log('DELETED')
+      $("#" + id).remove();
+      window.location.href = '/api/posts';
+    }
+  };
+  $.ajax(ajaxOption);
 };
 
 
