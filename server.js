@@ -15,6 +15,7 @@ var express 	   	= require('express'),
 	User 			      = require("./models/user");
 
 //middleware
+hbs.registerPartials(__dirname + '/views/partials');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(logger('dev'));
 app.use(methodOverride('__method'));
@@ -56,6 +57,14 @@ app.use(function(req, res, next){
   // call the next middleware in the stack
   next();
 });
+
+// hbs.registerHelper('ifUser', function(lvalue, rvalue, options) {
+//     if( lvalue._id == rvalue.id ) {
+//         return options.fn(this);
+//     } else {
+//         return options.inverse(this);
+//     }
+// });
 
 //routes
 var routes = require('./config/routes');

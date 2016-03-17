@@ -50,6 +50,10 @@ router.route('/api/posts')
 	.get(postsController.index)
 	.post(postsController.create);
 
+router.route('/destinations/:id/posts')
+	.get(postsController.index)
+	.post(postsController.create);
+
 router.route('/api/posts/new')
 	.get(postsController.new);
 	

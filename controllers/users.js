@@ -5,8 +5,12 @@ var usersController = {
 
   index: function(req, res) {
      User.find({}, function(err, users) {
-     	if(err) returnError(err);
+     	if(err) {
+        returnError(err);
+      } else {
       res.status(200).send(JSON.stringify(users));
+      console.log("index ", users);
+      }
     });
   },
 
@@ -15,6 +19,8 @@ var usersController = {
   	User.findById(id, function(err, user) {
   		if(err) returnError(err);
   		 res.render('../views/partials/usershow', {userJS: JSON.stringify(user), user: user});
+       console.log("user ", user);
+
   	});
   },
 
