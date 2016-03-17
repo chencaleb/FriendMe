@@ -2,7 +2,7 @@ html body {width: 100%; height: 100%;}
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  overflow-y:scroll;
+/*  overflow-y:scroll;*/
 /*  font-size: 1em;*/
 }
 
@@ -74,12 +74,12 @@ body {
   color: #fff;
 }
 #modalButtonLogin {
-    outline: none;
+  outline: none;
 
 }
 .fixed {
   margin-top: 0%;
-  position: fixed;
+/*  position: fixed;*/
   width: 100%;
 }
 
@@ -88,16 +88,16 @@ body {
 }
 
 .footer {
-    width: 100%;
-    height: 10em;
-    position: absolute;
-    bottom: 0;
-    background-color: red;
+  width: 100%;
+  height: 10em;
+  position: absolute;
+  bottom: 0;
+  background-color: red;
 }
 
-.h1, .h2, .h3, h1, h2, h3 {
+/*.h1, .h2, .h3, h1, h2, h3 {
   margin-top: 0%;
-}
+}*/
 
 
 .btn-file {
@@ -157,6 +157,10 @@ body {
 
 /*destinations*/
 
+#destinations_h1 {
+  text-align: center;
+}
+
 .cityImg {
   width: 100%;
   height: 14em;
@@ -167,7 +171,7 @@ body {
   width: 25%;
   height: 20em;
   margin-left: 6%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 .city:hover {
@@ -182,6 +186,10 @@ body {
 
 .panel {
   margin-bottom: 0%;
+}
+
+.panel-body:hover {
+  font-size: 1.5;
 }
 
 .panel-body {

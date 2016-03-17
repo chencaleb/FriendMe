@@ -1,25 +1,29 @@
-<form class="margin-top" id="newPost" onsubmit="post.createPost(event)">
+<h2 class="addNewPost"class="margin-top"> Add New Post </h2>
+<div id="new_post_form_div">
+	<form class="" id="new_post_form" onsubmit="post.createPost(event)">
+		<input type="text" hidden=true value={{destination._id}} id="destinationID">
+		<div class="row">
+		
+			<label for="description">Description:</label><br />
+			<input id="description" class="input" name="description" type="text" value="" size="30" /><br />
+		</div>
 
-	<div class="row">
-		<label for="description">Description:</label><br />
-		<input id="description" class="input" name="description" type="text" value="" size="30" /><br />
-	</div>
+		<div class="row">
+			<label for="interests">Interests:</label><br />
+			<input id="interests" class="input" name="interests" type="text" value="" size="30" /><br />
+		</div>
 
-	<div class="row">
-		<label for="interests">Interests:</label><br />
-		<input id="interests" class="input" name="interests" type="text" value="" size="30" /><br />
-	</div>
+		<div class="row">
+			<label for="email">Email:</label><br />
+			<input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+		</div>
 
-	<div class="row">
-		<label for="email">Email:</label><br />
-		<input id="email" class="input" name="email" type="text" value="" size="30" /><br />
-	</div>
+		<div class="row">
+			<label for="message">Your message:</label><br />
+			<textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+		</div>
 
-	<div class="row">
-		<label for="message">Your message:</label><br />
-		<textarea id="message" class="input" name="message" rows="3" cols="30"></textarea><br />
-	</div>
+		<input class="btn btn-primary" id="create_post" type="submit" value="Create Post" />
 
-	<input class="btn btn-primary" id="create_post" type="submit" value="Create Post" />
-
-</form>	
+	</form>	
+</div>

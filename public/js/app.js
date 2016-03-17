@@ -77,14 +77,15 @@ user.renderUser = function(user) {
 ///////POST/////////
 post.createPost = function(e) {
   console.log("clicked")
-
+  var destinationId = $('#destinationID').val();
+    console.log("DESTINATION ID", destinationId);
   e.preventDefault();
   var newPost = $(e.target).serialize();
   console.log(newPost);
-  $.post("/api/posts", newPost)
+  $.post('/api/destinations/'+ destinationId + '/posts', newPost)
     .done(function(res) {
      var id = JSON.parse(res)._id;
-     window.location.href = '/api/posts/'
+     window.location.href = '/api/destinations/' + destinationId + '/posts'
   })
     .fail(function(err) {
       console.log("Error", err);

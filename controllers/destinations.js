@@ -12,7 +12,9 @@ var destinationsController = {
 
   show: function(req, res) {
   	var id = req.params.id;
+    console.log("ID****", id)
   	Destination.findById(id, function(err, destination) {
+      console.log("DESTINATION", destination)
   		if(err) returnError(err);
   		 res.render('./partials/eachdestinationshow', { destination: destination});
   	});

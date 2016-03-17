@@ -57,13 +57,13 @@ router.route('/api/users/:id')
 
 
 	///////// POST/////////
-router.route('/api/posts')
+router.route('/api/destinations/:id/posts')
 	// .get(postsController.apiPosts)
 	.get(postsController.index)
 	.post(postsController.create);
 
-router.route('/api/posts/new')
-	.get(postsController.new);
+// router.route('/api/posts/new')
+// 	.get(postsController.new);
 	
 router.route('/api/posts/:id')
 	.get(postsController.show)
@@ -79,7 +79,14 @@ router.route('/api/destinations')
 	.get(destinationsController.apiDestinations);
 
 
+router.route('/api/destinations/:id/posts/new')
+	.get(postsController.new);
+
 router.route('/api/destinations/:id')
+	.get(destinationsController.show);
+
+
+router.route('/api/destinations/:id/posts')
 	.get(destinationsController.show);
 
 
