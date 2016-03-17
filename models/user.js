@@ -2,15 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
-var Post = require('./post');
-
 var UserSchema = new Schema({
 	firstName: {type: String},
 	lastName: {type: String},
 	email: {type: String},
 	photoUrl: String,
 	passwordDigest: {type: String, required: true},
-	posts:[{ type: Schema.ObjectId, ref: "Post"}]
 });
 
 
