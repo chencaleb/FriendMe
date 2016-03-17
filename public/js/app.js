@@ -7,16 +7,7 @@ $(document).ready(function() {
   $('#modalButtonLogout').hide();
   user.displaySession();
 
-
-
-  $("#toggleEditBtn").click(function() {
-    $("#editForm").toggle();
-  });
-
-  $('#modalButtonLogin').hide();
-  $('#modalButtonLogout').hide();
-  user.displaySession();
-  var password = document.getElementById("passwordDigest"),
+var password = document.getElementById("passwordDigest"),
     confirm_password = document.getElementById("signupPassword");
 
 function validatePassword(){
