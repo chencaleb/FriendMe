@@ -1,4 +1,11 @@
 $(document).ready(function() {
+  $("#toggleEditBtn").click(function() {
+    $("#editForm").toggle();
+  });
+
+  $('#modalButtonLogin').hide();
+  $('#modalButtonLogout').hide();
+  user.displaySession();
 
 var password = document.getElementById("passwordDigest"),
     confirm_password = document.getElementById("signupPassword");
@@ -14,13 +21,6 @@ function validatePassword(){
 password.onchange = validatePassword;
 confirm_password.onkeyup = validatePassword;
 
-  $("#toggleEditBtn").click(function() {
-    $("#editForm").toggle();
-  });
-
-  $('#modalButtonLogin').hide();
-  $('#modalButtonLogout').hide();
-  user.displaySession();
 });
 
   var user = {};
