@@ -2,6 +2,10 @@ $(document).ready(function() {
   $("#toggleEditBtn").click(function() {
     $("#editForm").toggle();
   });
+
+  $('#modalButtonLogin').hide();
+  $('#modalButtonLogout').hide();
+  user.displaySession();
 });
 
   var user = {};
@@ -152,6 +156,25 @@ post.deletePost = function(e) {
   };
   $.ajax(ajaxOption);
 };
+
+
+user.displaySession = function(){
+    $.get('/display', function(user){
+      console.log(user);
+      if (user === "") {
+        console.log('no user');
+        //show logged out version of nav
+        $('#modalButtonLogin').show();
+        $('#modalButtonLogout').hide();
+      }
+      else {
+        console.log('user present');
+        //show logged in version of nav
+        $('#modalButtonLogout').show();
+        $('#modalButtonLogin').hide();
+      }
+    });
+  };
 
 //USES BOOTSTRAP/jQUERY TO OPEN THE MODAL
 $('#signupModal').on('click', function() {

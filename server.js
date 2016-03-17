@@ -54,7 +54,7 @@ app.use(function(req, res, next){
     req.user = null;
   };
   // call the next middleware in the stack
-  next();
+  req.currentUser(next);
 });
 
 //routes

@@ -10,6 +10,7 @@ var express 			   = require('express'),
 	postsController 	   = require('../controllers/posts'),
 	destinationsController = require('../controllers/destinations'),
 	usersController 	   = require('../controllers/users'),
+	sessionController	   = require('../controllers/session'),
 	router 				   = express.Router();
 
 mongoose.connect('mongodb://localhost/friendme');
@@ -74,5 +75,9 @@ router.route('/api/destinations/:id')
 router.route('/sessions')
  	.post(usersController.loginUser)
  	.get(usersController.logoutUser);
+
+ //authorize login/logout
+ router.route('/display')
+ 	.get(sessionController.display);
 
 module.exports = router;
