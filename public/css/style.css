@@ -5,7 +5,9 @@ body {
   overflow-y:scroll;
 /*  font-size: 1em;*/
 }
-
+.modal {
+  color: #000;
+}
 .navbar {
   padding: 1% 0% 3% 0%;
 	background-color: #323B3D;
