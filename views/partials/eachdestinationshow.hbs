@@ -7,11 +7,13 @@
 	    {{#each destination.posts}}
 	    	<a href="/api/destinations/{{../destination._id}}/posts/{{id}}">
 	    	<div class="post-box">
+
 	    		<h3>Name: {{this.name}}</h3>
 	    		<h3>Email: {{this.email}}</h3>
 	    		<p>Description: {{this.description}}</p>
 	    		<p>Start Date:{{this.startDate}}</p>
 	    		<p>End Date:{{this.endDate}}</p> 
+	    		
 	    	</div>
 	    {{/each}}
     </div>
