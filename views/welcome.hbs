@@ -1,4 +1,3 @@
-
 <div class="jumbotron jumbotron1 text-center">
   <h1>Meet new people!</h1>
   <p>Travel with locals</p>
@@ -21,12 +20,6 @@
             {{!-- form begins --}}
             <form id="newUser" onsubmit="user.createUser(event)">
 
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="email"></label>
-              <div class="col-md-4">
-              <a href="/auth/facebook" type="button" class="btn btn-primary">Login with Facebook</a>
-              </div>
-            </div>
 
             <!-- Text input-->
             <div class="form-group">
@@ -81,7 +74,6 @@
               </div>
 
               <div id="center" class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" action="/">Close</button>
                 <input type="submit" value="Sign Up" id="sign_up_button" class="btn btn-primary">
                 <!-- <button type="button" class="btn btn-primary" id="saveUser">Save User</button> -->
               </div>
@@ -96,20 +88,120 @@
     </div><!-- /.modal -->
 </div>
 
-<div class="jumbotron2 text-center">
-  <h1>How it works?</h1>
  
   <!-- Button trigger modal -->
 </div>
 
-<div class="jumbotron3 text-center">
-  <h1>About Us</h1>
+<div class="text-center" id = "howitworks">
+<h1>How It Works</h1>
+  <p>
+    Have you ever desired to meet cool new people around the 
+    globe ? People who live at the coolest locations in the world and happens they're great hosts and also enjoy meeting new friends. 
+    So how it works ? 
+    First Register and Sign In 
+    Go to the destinations page and see if there are available hosts for where you would love to travel.  
+    If there is any available host check their profile and see if you share any interests send them email. 
+    Have fun and make FRIENDME wherever you go.
+  </p>
+  
  
   <!-- Button trigger modal -->
 </div>
 
-<div class="jumbotron4 text-center">
-  <h1>FAQ</h1>
- 
-  <!-- Button trigger modal -->
-</div>
+<div class="text-center" id = "aboutus">
+<h1>About us</h1>
+  <p>
+    FRIENDME is an app that came as idea between students at 
+    General Assembly - San Francisco (Lena, Luca, Caleb and Ivan),
+    who love to travel around the world and meet new people. In 
+    order to move away from traditional way of doing sightseeings 
+    when visiting great places on the planet and avoiding a bad 
+    chance to get "real" experience of journey, we decided to build  
+    FRIENDME app. 
+    App helps people with same interests and adventurous spirit to  
+    connect and share great experience while one of them is the top host.
+  </p>
+  </div>
+  <div id="accordion" class = "text-center faqs">
+        <h1>FAQS</h1>
+        <div class="panel panel-default" >
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Q. How do I check destinations ?</a>
+                </h3>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Once you’re registered member you can see available destinations and all of the hosts available for those destinations.
+                </div>
+            </div>
+        </div>
+      
+  
+  <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">Q. Once I’ve begun my trip, who should I contact for help?</a>
+                </h3>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Once you’ve begun your trip you can contact our live-help service which is link between you and the host. 
+                </div>
+            </div>
+        </div>
+
+  <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">Q. How do I get in touch with the host ?</a>
+                </h3>
+            </div>
+            <div id="collapseEleven" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Once you pick destination you will see available hosts for that location. On host profile page there is email address included.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Q. Is this free service ?</a>
+                </h3>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Yes, this is completely free of charge service. You can pay/tip host at your own discretion.
+                </div>
+            </div>
+        </div>
+
+  <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Q. Where can I find/leave reviews about the host experience ?</a>
+                </h3>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Reviews about the hosts and experience can be found on websites such as Yelp, TripAdvisor under FriendMe page.
+                </div>
+            </div>
+        </div>
+
+  <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">Q. Are there any age restrictions for traveling and using FriendMe service ?</a>
+                </h3>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Yes, you must be age 18 or older to use FriendMe website. 
+                </div>
+            </div>
+        </div>
+     </div>
+  </div> 

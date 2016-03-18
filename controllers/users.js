@@ -28,11 +28,11 @@ var usersController = {
     user.password = req.body.password;
   	User.createSecure(user, function(err, userData) {
       req.login(userData);
-      console.log("create ", req.session);
-      req.currentUser(function(err, current) {
-        if (err) res.status(500).send();
-        res.status(201).send(current);
-      });
+       console.log("create ", req.session);
+       req.currentUser(function(err, current) {
+          if (err) res.status(500).send();
+          res.status(201).send(current);
+       });
     });
  },
 
