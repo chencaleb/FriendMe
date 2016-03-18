@@ -1,9 +1,9 @@
 <h1> CITIES </h1>
-<div class="citiesContainer">
+
 
 	{{#each destinations}}
 	  <a href="/api/destinations/{{id}}">
-	  	<div class="city">
+	  	<div class="col-md-4 cities">
 	  		<div class="panel panel-default">
 	  			<div class="panel-body">{{this.name}}</div>
 	  			<img class="cityImg" src="{{this.photoUrl}}"</div>
@@ -12,4 +12,4 @@
 	  </a>
 	{{/each}}
 	
-</div>
+

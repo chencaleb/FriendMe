@@ -28,13 +28,20 @@ li a{
     color: #fff!important;
     font-weight: bold;
 }
-
-.navbar a:hover{
-    color: gray!important;
+#effectLogo:hover {
+  color: gray!important;
     font-size: 1.4em;
-   /*-webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: gray;*/
 }
+.links:hover{
+  text-decoration: underline!important;
+}
+
+.navbar a{
+   /* #323B3D; dark gray*/
+    color: #fff!important;
+    font-weight: bold;
+}
+
 
 .sign_up_button {
   padding: .4% 4%;
@@ -134,6 +141,7 @@ h1{
   height:14em;
 }
 footer {
+  display: block;
   width: 100%;
   background-color: #f5f5f5;
 }
@@ -195,7 +203,11 @@ footer > .container {
   margin-top: 5%;
 }
 
-.city:hover {
+.cities {
+  margin: 5% 0;
+}
+
+.cities:hover {
   opacity: 0.4;
   cursor: pointer;
 }
