@@ -125,20 +125,19 @@ post.editPost = function(e) {
   console.log(id);
 
   var updateData = {
-    interests: $('#interests').val(),
     // email: $('#email').val(),
     description: $('#description').val(),
   };
+  var destId = $('#destinationID').val();
 
   var ajaxOption = {
-    url: '/api/posts/' + id,
+    url: '/api/destinations/' + destId + '/posts/' + id,
     type: "PUT",
     dataType: 'json',
     data: updateData,
     success: function(res) {
       console.log("UPDATED DATA", updateData);
       // $('savedPost').html(response);
-      $('#postInterests').html(updateData.interests);
       // $('#postEmail').html(updateData.email)
       $('#postDescription').html(updateData.description);
       $('#editForm').hide();

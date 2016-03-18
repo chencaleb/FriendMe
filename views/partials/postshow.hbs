@@ -4,8 +4,8 @@
 <script id="post-template" type="text/x-handlbars-template">
 
 		<div id="\{{post._id}}" class="profile">
-    		<p>Interests: <span id="postInterests">\{{post.interests}} </span></p>
-			<!--   <p> Email: <span id="postsEmail"> \{{post.email}}</span> </p> -->
+    		
+			 <p> Email: <span id="postsEmail"> \{{post.email}}</span> </p>
 			  <p> Description: <span id="postDescription">\{{post.description}}</span></p>
 
 			<img src="\{{post.photoUrl}}"alt="image" id="profile_image">
@@ -23,17 +23,9 @@
 
 <form class="margin-top" id="editForm">
 
+	<input type="text" name="destinationID" hidden=true value={{destination._id}} id="destinationID">
+
 	<input type="text" hidden=true value={{post.id}} id="postID">
-
-	<div class="row">
-		<label for="interests">Interests:</label><br />
-		<input id="interests" class="input" name="interests" type="text" value="{{post.interests}}" size="30" /><br />
-	</div>
-
-<!-- 	<div class="row">
-		<label for="email">Email:</label><br />
-		<input id="email" class="input" name="email" type="text" value="{{post.email}}" size="30" /><br />
-	</div> -->
 
 	<div class="row">
 		<label for="description">Description:</label><br />
