@@ -5,6 +5,9 @@ body {
   overflow-y:scroll;
 /*  font-size: 1em;*/
 }
+li a{
+  text-align: right;
+}
 .modal {
   color: #000;
 }
@@ -98,6 +101,7 @@ body {
   background-image: url('/images/jumbotronimage.png');
   background-size: cover;
   color: #fff;
+  margin-bottom: 0;
 }
 
 #modalButton {
@@ -215,10 +219,7 @@ html {
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
+
 
 footer {
   width: 100%;
@@ -333,7 +334,6 @@ footer .footer-below {
 /*FAQ*/ 
 
 #faqs {
-        font-size: 40px;
         background-color: #172A3E;
         color: #fff;
         width: 100%;
