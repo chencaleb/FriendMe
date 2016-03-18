@@ -104,12 +104,13 @@ post.createPost = function(e) {
   console.log("clicked");
 
   e.preventDefault();
-  var id = $('#destinationID').val()
+  var id = $('#destinationID').val();
   var newPost = $(e.target).serialize();
     console.log(newPost);
   $.post('/api/destinations/' + id, newPost)
     .done(function(res) {
-     var id = JSON.parse(res)._id;
+     // var id = JSON.parse(res)._id;
+     console.log(res);
      window.location.href = '/api/destinations/' + id;
   })
     .fail(function(err) {

@@ -36,13 +36,14 @@ var postsController = {
     console.log("SerializedDATA", req.body);
   	Post.create(post, function(err, createdPost) {
       if (err) {
+        console.log(err);
         res.status(500).send();
       } else {
           Destination.findOne({_id: id}, function(err, destination){ 
             destination.posts.push(createdPost);
             destination.save(function() {
               console.log("post saved", createdPost);
-              res.render('./partials/eachdestinationshow', {destination: destination});
+              res.send(destination);
             });
           });
 	      }
