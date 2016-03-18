@@ -151,6 +151,8 @@ post.editPost = function(e) {
       console.log(res);
       $('#postDescription').html(updateData.description);
       $('#editForm').hide();
+
+      window.location.href = '/api/destinations/' + destId;
       // $('savedPost').html(response);
       // $('#postEmail').html(updateData.email)
       // $('#displayPhotoUrl').html(updateData.photoUrl)
