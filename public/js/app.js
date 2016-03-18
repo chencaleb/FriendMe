@@ -7,8 +7,8 @@ $(document).ready(function() {
   $('#modalButtonLogout').hide();
   user.displaySession();
 
-var password = document.getElementById("passwordDigest"),
-    confirm_password = document.getElementById("signupPassword");
+var password = $("#passwordDigest"),
+    confirm_password = $("#signupPassword");
 
 function validatePassword(){
   if(password.value != confirm_password.value) {
@@ -67,8 +67,6 @@ user.deleteUser = function(e) {
 
 user.editUser = function(e) {
   var id = $('#userID').val();
-
-  // console.log(id);
   var updateData = {
     firstName: $('#firstName').val(),
     lastName: $('#lastName').val(),
@@ -101,16 +99,11 @@ user.renderUser = function(user) {
 
 ///////POST/////////
 post.createPost = function(e) {
-  console.log("clicked");
-
   e.preventDefault();
   var id = $('#destinationID').val();
   var newPost = $(e.target).serialize();
-    console.log(newPost);
   $.post('/api/destinations/' + id, newPost)
     .done(function(res) {
-     // var id = JSON.parse(res)._id;
-     console.log(res);
      window.location.href = '/api/destinations/' + id;
   })
     .fail(function(err) {
@@ -121,14 +114,13 @@ post.createPost = function(e) {
 post.editPost = function(e) {
   e.preventDefault();
   var id = $('#postID').val();
-
-  console.log(id);
-
+  console.log("asdafdasa", id);
+  var destId = $('#editDestinationId').val();
+  console.log("destId", destId);
   var updateData = {
-    // email: $('#email').val(),
-    description: $('#description').val(),
+    email: $('#email').val(),
+    description: $('#description').val()
   };
-  var destId = $('#destinationID').val();
 
   var ajaxOption = {
     url: '/api/destinations/' + destId + '/posts/' + id,
@@ -137,10 +129,11 @@ post.editPost = function(e) {
     data: updateData,
     success: function(res) {
       console.log("UPDATED DATA", updateData);
-      // $('savedPost').html(response);
-      // $('#postEmail').html(updateData.email)
+      console.log(res);
       $('#postDescription').html(updateData.description);
       $('#editForm').hide();
+      // $('savedPost').html(response);
+      // $('#postEmail').html(updateData.email)
       // $('#displayPhotoUrl').html(updateData.photoUrl)
     }
   };
@@ -158,26 +151,24 @@ post.renderPost = function(post) {
 
 post.deletePost = function(e) {
   var id = $(e.target).parent().attr("id");
-  console.log('delete', id);
+    console.log('delete', id);
   var ajaxOption = {
-    url: '/api/posts/' + id,
+    url: '/api/destinations/' + destination._id + '/posts/' + id,
     type: "DELETE",
     success: function(result) {
       console.log('DELETED');
       $("#" + id).remove();
-      window.location.href = '/api/posts';
+      window.location.href = '/api/destinations/' + destination._id;
     }
   };
   $.ajax(ajaxOption);
 };
-
 
 user.displaySession = function(){
     $.get('/display', function(user){
       console.log(user);
       if (user === "") {
         console.log('no user');
-        //show logged out version of nav
         $('#modalButtonLogin').show();
         $('#modalButtonLogout').hide();
       }

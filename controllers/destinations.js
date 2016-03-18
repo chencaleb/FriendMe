@@ -13,8 +13,11 @@ var destinationsController = {
   show: function(req, res) {
   	var id = req.params.id;
   	Destination.findById(id, function(err, destination) {
+      console.log("here are all the destinations:", destination);
+      // iterate through the destination.posts then use find on each post find in a lump
+      // posts.push(post)
   		if(err) returnError(err);
-  		 res.render('./partials/eachdestinationshow', { destination: destination});
+  		 res.render('./partials/eachdestinationshow', { destination: destination}); // <- pass the whole posts into here ex: posts:posts
   	});
   },
 

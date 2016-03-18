@@ -74,7 +74,7 @@ router.route('/api/destinations/:id')
 	.get(destinationsController.show)
 	.post(postsController.create);
 
-router.route('/api/destinations/:id/posts/:id')
+router.route('/api/destinations/:destination_id/posts/:id')
 	.get(postsController.show)
 	.put(postsController.update)
 	.delete(postsController.destroy);
