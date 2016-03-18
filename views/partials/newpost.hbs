@@ -31,7 +31,7 @@
 
         <div class="row">
             <label for="photoUrl" >Profile Picture:</label><br />
-            <input id="photoUrl" class="input" name="photoUrl" type="text" value="" size="30" /><br />
+            <input id="uploadCare" type="hidden" name="photoUrl" role="uploadcare-uploader" value="{{user.photoUrl}}"/><br />
         </div>
 
         <input class="btn btn-primary" id="create_post" type="submit" value="Create Post" />
