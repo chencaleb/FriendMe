@@ -13,7 +13,8 @@ var express 			   = require('express'),
 	sessionController	   = require('../controllers/session'),
 	router 				   = express.Router();
 
-mongoose.connect('mongodb://localhost/friendme');
+mongoose.connect(process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL || 'mongodb://localhost/friendme');
 
 /*
  * HTML Endpoints
