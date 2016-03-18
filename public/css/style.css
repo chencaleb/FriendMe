@@ -80,8 +80,16 @@ body {
   color: #404F52
 }
 
-.jumbotron3 {
-  padding: 2% 6%;
+#howitworks {
+  padding: 4% 16%;
+  background-color: #172A3E;
+  color: #fff;
+}
+
+#aboutus {
+  padding: 4% 16%;
+  background-color: #3B4F63;
+  color: #fff;
 }
 
 .jumbotron { 
@@ -104,13 +112,6 @@ body {
     color: #fff;
 }
 
-.jumbotron3 { 
-    margin-top: -5%;
-    height: 20em; 
-    background-color: #172A3E;
-    color: #fff;
-
-}
 
 
 .jumbotron4 { 
@@ -331,9 +332,11 @@ footer .footer-below {
 
 /*FAQ*/ 
 
-.faqHeader {
+#faqs {
         font-size: 40px;
-        margin: 20px;
+        background-color: #172A3E;
+        color: #fff;
+        width: 100%;
     }
 
     .panel-heading [data-toggle="collapse"]:after {
