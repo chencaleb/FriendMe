@@ -46,10 +46,10 @@ router.route('/api/users/:id')
 	.put(usersController.update);
 
 	///////// POST/////////
-router.route('/api/posts')
-	// .get(postsController.apiPosts)
-	.get(postsController.index)
-	.post(postsController.create);
+// router.route('/api/posts')
+// 	// .get(postsController.apiPosts)
+// 	.get(postsController.index)
+// 	.post(postsController.create);
 
 router.route('/api/posts/new')
 	.get(postsController.new);
@@ -58,8 +58,13 @@ router.route('/api/posts/:id')
 	.get(postsController.show)
 	.put(postsController.update)
 	.delete(postsController.destroy);
-	
 
+router.route('/api/destinations/:id/posts/new')
+	.get(postsController.new);
+
+// router.route('/api/destinations/:id/posts')
+// 	.get(postsController.index);
+	
 	///////// DESTINATION /////////
 router.route('/destinations')
 	.get(destinationsController.index);
@@ -67,9 +72,9 @@ router.route('/destinations')
 router.route('/api/destinations')
 	.get(destinationsController.apiDestinations);
 
-
 router.route('/api/destinations/:id')
-	.get(destinationsController.show);
+	.get(destinationsController.show)
+	.post(postsController.create);
 
 //session routes
 router.route('/sessions')

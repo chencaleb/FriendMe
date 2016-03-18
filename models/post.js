@@ -11,5 +11,5 @@ var PostSchema = new Schema({
 	createdAt: { type: Date, required: true, default: Date.now }
 });
 
-var PostSchema = mongoose.model('Post', PostSchema);
-module.exports = PostSchema;
+var Post = mongoose.model('Post', PostSchema);
+module.exports = Post;
