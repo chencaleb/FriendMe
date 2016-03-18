@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var PostSchema = require('./post');
+var PostSchema = require('./post').schema;
 
 var DestinationSchema = new Schema({
 	name: {type: String, required: true},

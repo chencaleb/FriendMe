@@ -1,4 +1,5 @@
 var Post = require('../models/post');
+var Destination = require('../models/destination');
 
 var postsController = {
 
@@ -15,17 +16,38 @@ var postsController = {
   },
 
   new: function(req,res) {
-  	res.render('./partials/newpost')
+    var id = req.params.id;
+      Destination.findOne({_id: id}, function(err, destination){ 
+        console.log("DESTINATION", destination);
+    	res.render('./partials/newpost', {destination: destination});
+      });
   },
 
   create: function(req, res) {
-  	var post = req.body;
-  	Post.create(post, function(err, post) {
-	  	err ?
-	  		res.status(500).send() :
-	  		res.status(201).send(JSON.stringify(post));
-	  });
- 	},
+  	var post =  {
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      name: req.body.name,
+      description: req.body.description,
+      photoUrl: req.body.photoUrl
+    };
+
+    var id = req.body.destinationID;
+    console.log("SerializedDATA", req.body);
+  	Post.create(post, function(err, createdPost) {
+      if (err) {
+        res.status(500).send();
+      } else {
+          Destination.findOne({_id: id}, function(err, destination){ 
+            destination.posts.push(createdPost);
+            destination.save(function() {
+              console.log("post saved", createdPost);
+              res.render('./partials/eachdestinationshow', {destination: destination});
+            });
+          });
+	      }
+      });
+ 	  },
 
  	show: function(req, res) {
   	var id = req.params.id;
