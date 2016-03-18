@@ -60,7 +60,7 @@ var usersController = {
       if (req.body.email) user.email = req.body.email;
       if (req.body.photoUrl) user.photoUrl = req.body.photoUrl;
       if (req.body.passwordDigest) user.passwordDigest = req.body.passwordDigest;
-      console.log("REQ. BODY" , req);
+      console.log("REQ. BODY" , req.body);
       user.save(function(err, savedUser) {
         if (err) {
           res.status(200);
