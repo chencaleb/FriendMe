@@ -1,20 +1,21 @@
 <div id="profile_page"></div>
 
  <script id="user-template" type="text/x-handlbars-template">
+ <div id="profilePages">
 
-    <h1><span id="headerFirstName">\{{user.firstName}}</span> </h1>
+    <h1><span id="headerFirstName">\{{user.firstName}} \{{user.lastName}}</span> </h1>
 
         <div id="\{{user._id}}" class="profile">
-            <img src="\{{user.photoUrl}}"alt="profile pic" id="profile_image">
-            <p> Name: <span id="displayFirstName"> \{{user.firstName}}</span> </p> 
-        <p> <span id="displayLastName">\{{user.lastName}}</span> </p>
-              <p> Email: <span id="displayEmail"> \{{user.email}}</span> </p>
+              <img src="\{{user.photoUrl}}"alt="profile pic" id="profile_image">
+              <p> <strong>Name:</strong> <br /> <span id="displayFirstName"> \{{user.firstName}}</span> </p> 
+              <p> <strong>Last name:</strong> <br /> <span id="displayLastName">\{{user.lastName}}</span> </p>
+              <p> <strong>Email:</strong> <br /> <span id="displayEmail"> \{{user.email}}</span> </p>
 
       <button class="btn btn-primary" id="modalEditUser"  data-toggle="modal" data-target="#triggerEditModal">Edit</button>
             <button class= "btn btn-primary" onclick="user.deleteUser(event)">Delete</button>
     </div>
     <!--   <button class= "btn btn-primary" onclick="user.createPost(event)">Add a Post</button> -->
-
+</div>
 </script> 
 
 <script type="text/javascript">
@@ -85,12 +86,11 @@
                 <label class="col-md-4 control-label" for="photoUrl">Photo</label>
                 <div class="col-md-4">
                 <input id="uploadCare" type="hidden" name="photoUrl" role="uploadcare-uploader" value="{{user.photoUrl}}"/>
-                <input id="photoUrl" name="photoUrl" type="file" value="{{user.photoUrl}}" class="btn btn-default btn-file">
+                
                 </div>
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" action="/">Close</button>
                 <button type="button" class="btn btn-primary" onclick="user.editUser(event)" data-dismiss="modal" id="saveUser">Save</button>
               </div>
             </form>

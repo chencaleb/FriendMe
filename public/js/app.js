@@ -79,7 +79,7 @@ user.deleteUser = function(e) {
 user.editUser = function(e) {
   var id = $('#userID').val();
 
-  // console.log(id);
+  console.log("USER ID", id);
   var updateData = {
     firstName: $('#firstName').val(),
     lastName: $('#lastName').val(),

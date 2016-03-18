@@ -2,15 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
-var Post = require('./post');
-
 var UserSchema = new Schema({
 	firstName: {type: String},
 	lastName: {type: String},
 	email: {type: String},
 	photoUrl: String,
 	passwordDigest: {type: String, required: true},
-	posts:[{ type: Schema.ObjectId, ref: "Post"}]
 });
 
 
@@ -69,14 +66,15 @@ UserSchema.methods.checkPassword = function (password) {
 var User = mongoose.model('User', UserSchema);
 module.exports = User;
 
-User.schema.path('email').validate(function (value, respond) {
-   User.findOne({ email: value }, function (err, user) {
-       if(user) {
-         console.log("user exists");
-         respond(false);
-       } else {
-         console.log("new user");
-         respond(true);
-       }
-   });
-}, 'This email address is already registered');
+// User.schema.path('email').validate(function (value, respond) {
+//    User.findOne({ email: value }, function (err, user) {
+//        if(user) {
+//          console.log("user exists");
+//          respond(false);
+//        } else {
+//          console.log("new user");
+//          respond(true);
+//        }
+//    });
+// }, 'This email address is already registered');
+
