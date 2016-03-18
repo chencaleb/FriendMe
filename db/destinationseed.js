@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var conn = mongoose.connect('mongodb://localhost/friendme');
+var conn = mongoose.connect(process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL || 'mongodb://localhost/friendme');
 console.log('connected');
 var Destination = require('../models/destination');
 
