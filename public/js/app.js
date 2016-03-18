@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  $('#fullpage').fullpage();
+
   var jumboHeight = $('.jumbotron').outerHeight();
 function parallax(){
     var scrolled = $(window).scrollTop();
