@@ -12,6 +12,8 @@ var UserSchema = new Schema({
 
 
 
+
+
 UserSchema.statics.createSecure = function (user, cb) {
   // `_this` now references our schema
   var _this = this;
@@ -60,5 +62,18 @@ UserSchema.methods.checkPassword = function (password) {
 
 
 
+
 var User = mongoose.model('User', UserSchema);
 module.exports = User;
+
+User.schema.path('email').validate(function (value, respond) {
+   User.findOne({ email: value }, function (err, user) {
+       if(user) {
+         console.log("user exists");
+         respond(false);
+       } else {
+         console.log("new user");
+         respond(true);
+       }
+   });
+}, 'This email address is already registered');
