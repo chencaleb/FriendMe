@@ -20,8 +20,8 @@ $(window).scroll(function(e){
   $('#modalButtonLogout').hide();
   user.displaySession();
 
-var password = $("#passwordDigest"),
-    confirm_password = $("#signupPassword");
+var password = document.getElementById("passwordDigest"),
+    confirm_password = document.getElementById("signupPassword");
 
 function validatePassword(){
   if(password.value != confirm_password.value) {
