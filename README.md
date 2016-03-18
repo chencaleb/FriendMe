@@ -13,9 +13,21 @@ Wireframes:
 User Stories: https://trello.com/b/YAtZuCwz/project-3-friendme
 
 Technologies Used
+##Technologies Used
+####jQuery
+####Express
+####HTML5/CSS
+####Mongodb
+####Mongoose
+####Github
 
 Unsolved Problems
 
 Features To Be Added
 
-Contributions
+##Contributions
+1. Fork it.
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -m 'Adds new feature'`
+4. Push to the branch: `git push origin new-feature`
+5. Submit a pull request 

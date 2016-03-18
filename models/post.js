@@ -1,16 +1,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Destination = require('./destination');
-var User = require('./user');
 
 var PostSchema = new Schema({
-	description: String,
-	interests: String,
+	name: String,
 	email: String,
+	description: String,
 	photoUrl: String,
-	users: [{ type: Schema.ObjectId, ref: "User"}],
-	destinations: [{ type: Schema.ObjectId, ref: "Destination"}]
+	startDate: { type: Date, required: true, default: Date.now },
+	endDate: { type: Date, required: true, default: Date.now },
+	createdAt: { type: Date, required: true, default: Date.now }
 });
 
-var Post = mongoose.model('Post', PostSchema);
-module.exports = Post;
+var PostSchema = mongoose.model('Post', PostSchema);
+module.exports = PostSchema;

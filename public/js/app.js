@@ -1,7 +1,15 @@
 $(document).ready(function() {
 
+  var jumboHeight = $('.jumbotron').outerHeight();
+function parallax(){
+    var scrolled = $(window).scrollTop();
+    $('.bg').css('height', (jumboHeight-scrolled) + 'px');
+}
 
-
+$(window).scroll(function(e){
+    parallax();
+});
+  
   $("#toggleEditBtn").click(function() {
     $("#editForm").toggle();
   });
@@ -9,7 +17,8 @@ $(document).ready(function() {
   $('#modalButtonLogin').hide();
   $('#modalButtonLogout').hide();
   user.displaySession();
-  var password = document.getElementById("passwordDigest"),
+
+var password = document.getElementById("passwordDigest"),
     confirm_password = document.getElementById("signupPassword");
 
 function validatePassword(){
@@ -70,7 +79,7 @@ user.deleteUser = function(e) {
 user.editUser = function(e) {
   var id = $('#userID').val();
 
-  // console.log(id);
+  console.log("USER ID", id);
   var updateData = {
     firstName: $('#firstName').val(),
     lastName: $('#lastName').val(),
