@@ -81,8 +81,9 @@ body {
   color: #fff;
 }
 
-#modalButtonLogin {
+#modalButton {
     outline: none;
+    color: #fff;
 }
 
 .jumbotron2 { 
