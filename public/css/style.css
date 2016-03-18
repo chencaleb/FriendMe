@@ -80,6 +80,10 @@ body {
   color: #404F52
 }
 
+.jumbotron3 {
+  padding: 2% 6%;
+}
+
 .jumbotron { 
   padding-top: 2%;
   height: 40em; 
@@ -218,7 +222,7 @@ body {
 footer {
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 340px;
+
   background-color: #f5f5f5;
 }
 /* Custom page CSS */
