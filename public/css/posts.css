@@ -1,0 +1,101 @@
+
+#new_post_form_div {
+    text-align: center;
+    padding: 4% 0;
+    margin: 3% auto;
+    width: 35%;
+    border: 1px solid #838C8F;
+    border-radius: 10px;
+    background-color: #2c3e50;
+}
+
+.addNewPost {
+    text-align: center;
+    background-color: #838C8F;
+    border-radius: 10px;
+    padding: .5%;
+    margin: 3% auto 3% auto;
+    width: 25%;
+}
+
+.margin-top {
+    text-align: center;
+    margin-top: 3%;
+}
+
+label {
+    color: #838C8F;
+    font-size: 1.5em;
+    text-align: left;
+}
+
+#create_post {
+    font-size: 1.3em;
+    margin-top: 4%;
+    padding: 1% 9%;
+}
+
+.single_post {
+    display: inline-block;
+    margin: 2%;
+    width: 20%;
+    vertical-align: text-top;
+    /*margin-bottom: 2%;*/
+    border: 1px solid gray;
+}
+
+.description_content {
+    height: 10%;
+}
+
+.profile {
+    margin-left: 20%;
+}
+
+#editForm {
+    display: none;
+}
+
+#addAPost {
+    margin-bottom: 1%;
+    padding-bottom: 1%;
+}
+
+#borderpost {
+    border: 2px;
+}
+
+/*/////////DESTINATION POSTS////////////*/
+
+.destination_posts_div {
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+
+#addNewPost {
+    font-size: 1.3em;
+}
+
+#new_post_form_div {
+    width: 65%;
+}
+
+.margin-top {
+    text-align: center;
+    margin-top: 3%;
+}
+
+label {
+    font-size: 1em;
+}
+
+#create_post {
+    font-size: .7em;
+}
+
+@media (max-width: 450px) {
+
+#addNewPost {
+    width: 35%;
+}

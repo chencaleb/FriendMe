@@ -6,10 +6,10 @@ var PostSchema = new Schema({
 	email: String,
 	description: String,
 	photoUrl: String,
-	startDate: { type: Date, required: true, default: Date.now },
-	endDate: { type: Date, required: true, default: Date.now },
-	createdAt: { type: Date, required: true, default: Date.now }
+	startDate: { type: Date, required: false, default: Date.now },
+	endDate: { type: Date, required: false, default: Date.now },
+	createdAt: { type: Date, required: false, default: Date.now }
 });
 
-var PostSchema = mongoose.model('Post', PostSchema);
-module.exports = PostSchema;
+var Post = mongoose.model('Post', PostSchema);
+module.exports = Post;

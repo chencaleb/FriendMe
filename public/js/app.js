@@ -80,8 +80,6 @@ user.deleteUser = function(e) {
 
 user.editUser = function(e) {
   var id = $('#userID').val();
-
-  console.log("USER ID", id);
   var updateData = {
     firstName: $('#firstName').val(),
     lastName: $('#lastName').val(),
@@ -114,15 +112,12 @@ user.renderUser = function(user) {
 
 ///////POST/////////
 post.createPost = function(e) {
-  console.log("clicked");
-
   e.preventDefault();
+  var id = $('#destinationID').val();
   var newPost = $(e.target).serialize();
-  console.log(newPost);
-  $.post("/api/posts", newPost)
+  $.post('/api/destinations/' + id, newPost)
     .done(function(res) {
-     var id = JSON.parse(res)._id;
-     window.location.href = '/api/posts/';
+     window.location.href = '/api/destinations/' + id;
   })
     .fail(function(err) {
       console.log("Error", err);
@@ -132,27 +127,26 @@ post.createPost = function(e) {
 post.editPost = function(e) {
   e.preventDefault();
   var id = $('#postID').val();
-
-  console.log(id);
-
+  console.log("asdafdasa", id);
+  var destId = $('#editDestinationId').val();
+  console.log("destId", destId);
   var updateData = {
-    interests: $('#interests').val(),
-    // email: $('#email').val(),
-    description: $('#description').val(),
+    email: $('#email').val(),
+    description: $('#description').val()
   };
 
   var ajaxOption = {
-    url: '/api/posts/' + id,
+    url: '/api/destinations/' + destId + '/posts/' + id,
     type: "PUT",
     dataType: 'json',
     data: updateData,
     success: function(res) {
       console.log("UPDATED DATA", updateData);
-      // $('savedPost').html(response);
-      $('#postInterests').html(updateData.interests);
-      // $('#postEmail').html(updateData.email)
+      console.log(res);
       $('#postDescription').html(updateData.description);
       $('#editForm').hide();
+      // $('savedPost').html(response);
+      // $('#postEmail').html(updateData.email)
       // $('#displayPhotoUrl').html(updateData.photoUrl)
     }
   };
@@ -170,26 +164,24 @@ post.renderPost = function(post) {
 
 post.deletePost = function(e) {
   var id = $(e.target).parent().attr("id");
-  console.log('delete', id);
+    console.log('delete', id);
   var ajaxOption = {
-    url: '/api/posts/' + id,
+    url: '/api/destinations/' + destination._id + '/posts/' + id,
     type: "DELETE",
     success: function(result) {
       console.log('DELETED');
       $("#" + id).remove();
-      window.location.href = '/api/posts';
+      window.location.href = '/api/destinations/' + destination._id;
     }
   };
   $.ajax(ajaxOption);
 };
-
 
 user.displaySession = function(){
     $.get('/display', function(user){
       console.log(user);
       if (user === "") {
         console.log('no user');
-        //show logged out version of nav
         $('#modalButtonLogin').show();
         $('#modalButtonLogout').hide();
       }

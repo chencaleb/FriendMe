@@ -1,6 +1,18 @@
 <div class="destination_show_div">
     <div class="destination_posts_div">
-        <h1>{{destination.name}}</h1>
+        <h1 id="destinationName">{{destination.name}}</h1>
         <a id="addAPost" href="/api/destinations/{{destination._id}}/posts/new" class= "btn btn-primary">Add a Post</a>
     </div>
+    <div class="container">
+	    {{#each destination.posts}}
+	    	<a href="/api/destinations/{{../destination._id}}/posts/{{id}}">
+	    	<div id="postborder" class="post-box">
+	    		<h3 class="title">{{this.name}}</h3>
+	    		<div class="description-container">
+	    			description: {{this.description}}
+	    		</div>
+	    	</div>
+	    {{/each}}
+    </div>
+
 </div>

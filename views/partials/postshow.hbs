@@ -4,9 +4,11 @@
 <script id="post-template" type="text/x-handlbars-template">
 
 		<div id="\{{post._id}}" class="profile">
-    		<p>Interests: <span id="postInterests">\{{post.interests}} </span></p>
-			<!--   <p> Email: <span id="postsEmail"> \{{post.email}}</span> </p> -->
-			  <p> Description: <span id="postDescription">\{{post.description}}</span></p>
+			<p> Name: <span id="postsName"> \{{post.name}}</span> </p>
+    		<p> Email: <span id="postsEmail"> \{{post.email}}</span> </p>
+			<p> Description: <span id="postDescription">\{{post.description}}</span></p>
+			<p> Start Date: <span id="postsStart"> \{{post.startDate}}</span> </p>
+			<p> End Date: <span id="postsEnd"> \{{post.endDate}}</span> </p>
 
 			<img src="\{{post.photoUrl}}"alt="image" id="profile_image">
 
@@ -22,22 +24,33 @@
  </script>
 
 <form class="margin-top" id="editForm">
+	<input type="text" name="editDestinationId" hidden=true value={{destination._id}} id="editDestinationId">
 
 	<input type="text" hidden=true value={{post.id}} id="postID">
-
-	<div class="row">
-		<label for="interests">Interests:</label><br />
-		<input id="interests" class="input" name="interests" type="text" value="{{post.interests}}" size="30" /><br />
+	
+	<div class = "row">
+			<label for="name">Name:</label><br />
+			<input type="text" name="name">
 	</div>
 
-<!-- 	<div class="row">
+	<div class = "row">
 		<label for="email">Email:</label><br />
-		<input id="email" class="input" name="email" type="text" value="{{post.email}}" size="30" /><br />
-	</div> -->
+		<input type="text" name="email">
+	</div>
 
 	<div class="row">
 		<label for="description">Description:</label><br />
 		<textarea type="text" id="description" class="input" name="description" rows="3" cols="30">{{post.description}}</textarea> <br />
+	</div>
+
+	<div class = "row">
+		<label for="startDate">Start Date:</label><br />
+		<input type="date" name="startDate">
+	</div>
+
+	<div class = "row">
+		<label for="endDate">End Date:</label><br />
+		<input type="date" name="endDate">
 	</div>
 
 	<button class="btn btn-primary" onclick="post.editPost(event)" type="submit" id="updateBtn">Update Post</button>
