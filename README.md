@@ -2,7 +2,7 @@
 
 Overview
 
-Development
+FriendMe was designed to connect travellers with locals from places that they are travelling to. Similar to AirBnb, locals can offer their services as a sort of guide to the city since they know it best.
 
 Wireframes:
 
@@ -13,21 +13,20 @@ Wireframes:
 User Stories: https://trello.com/b/YAtZuCwz/project-3-friendme
 
 Technologies Used
-##Technologies Used
 ####jQuery
 ####Express
 ####HTML5/CSS
 ####Mongodb
 ####Mongoose
 ####Github
+####Heroku
 
 Unsolved Problems
+1. Merge conflicts
 
 Features To Be Added
 
 ##Contributions
-1. Fork it.
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Adds new feature'`
-4. Push to the branch: `git push origin new-feature`
-5. Submit a pull request 
+1. Fork repo
+2. Make contributions
+3. Submit a pull request 
