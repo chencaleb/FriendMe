@@ -84,9 +84,11 @@ var postsController = {
  	update: function(req, res) {
 		var id = req.params.id;
     var destId = req.params.destination_id;
-		console.log(destId);
+		  console.log("WHAT IS THIS", destId);
 	  Post.findById(id, function(err, post){
-	  	(console.log("POST", post));
+
+	  	(console.log("befor POST", post));
+      console.log("ERROR", err);
     if (err) returnError(err);
     if (req.body.name) post.name = req.body.name;
     if (req.body.email) post.email = req.body.email;
@@ -94,21 +96,32 @@ var postsController = {
     if (req.body.photoUrl) post.photoUrl = req.body.photoUrl;
     if (req.body.startDate) post.startDate = req.body.startDate;
     if (req.body.endDate) post.endDate = req.body.endDate;
+      (console.log("POST", post));
 	  post.save(function(err, savedPost) {
       if(err) {
         res.status(200);
       } else {
         console.log("destination:", destId);
-        console.log("updatedPost:", savedPost);        
+        console.log("updatedPost:", savedPost); 
+        console.log('********************************************')       
         Destination.findOne({_id: destId}, function(err, destination){
+          destination.posts.forEach(function(post) {
+            console.log(post._id)
+            if (post._id == id) {
+              console.log('req.body.description ', req.body.description)
+              post.description = req.body.description;
+            }
+          });
+
+          console.log('post ** **', destination.posts)
           // for(var i = 0; i < destination.posts.length; i++){
           //   console.log("current iterator for destination posts", i, destination.posts[i]._id, post._id, savedPost._id);
-          //   if(destination.posts[i]._id == post._id) {
+          //   if(destination.posts[i]._id === post._id) {
           //     console.log("hi daniel i was hit", destination.posts[i]);
           //     destination.posts[i] = savedPost;
           //   }
           // }
-          // destination.save();
+          destination.save();
           res.send(destination);
         });
       }
