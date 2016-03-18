@@ -98,18 +98,37 @@ user.renderUser = function(user) {
 };
 
 ///////POST/////////
-post.createPost = function(e) {
-  e.preventDefault();
-  var id = $('#destinationID').val();
-  var newPost = $(e.target).serialize();
-  $.post('/api/destinations/' + id, newPost)
-    .done(function(res) {
-     window.location.href = '/api/destinations/' + id;
-  })
-    .fail(function(err) {
-      console.log("Error", err);
-    });  
-};
+
+// post.createPost = function(e) {
+//   e.preventDefault();
+//   var id = $('#destinationID').val();
+//   var newPost = $(e.target).serialize();
+//   $.post('/api/destinations/' + id, newPost)
+//     .done(function(res) {
+//      window.location.href = '/api/destinations/' + id;
+//   })
+//     .fail(function(err) {
+//       console.log("Error", err);
+//     });  
+// };
+
+// post.createPost = function(e) {
+//   console.log("clicked");
+
+//   e.preventDefault();
+//   var id = $('#destinationID').val()
+//   var newPost = $(e.target).serialize();
+//     console.log(newPost);
+//   $.post('/api/destinations/' + id, newPost)
+//     .done(function(res) {
+//      var id = JSON.parse(res)._id;
+//      window.location.href = '/api/destinations/' + id;
+//   })
+//     .fail(function(err) {
+//       console.log("Error", err);
+//     });  
+// };
+
 
 post.editPost = function(e) {
   e.preventDefault();

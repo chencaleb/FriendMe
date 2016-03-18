@@ -1,7 +1,7 @@
 <h2 class="addNewPost"class="margin-top"> Add New Post </h2>
 
 <div id="new_post_form_div">
-    <form class="" id="new_post_form" onsubmit="post.createPost(event)">
+    <form class="" method="POST" id="new_post_form" action="/api/destinations/{{destination._id}}">
         <input type="text" name="destinationID" hidden=true value={{destination._id}} id="destinationID">
 
 		<div class = "row">

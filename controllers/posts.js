@@ -39,16 +39,26 @@ var postsController = {
         console.log(err);
         res.status(500).send();
       } else {
-          Destination.findOne({_id: id}, function(err, destination){ 
-            destination.posts.push(createdPost._id);
-            destination.save(function() {
-              console.log("post saved", createdPost);
-              res.send(destination);
+        Destination.findById({_id: id}, function(err, destination){ 
+          destination.posts.push(createdPost); 
+          destination.save(function(err, result) {
+            if(err) {
+              console.log("***** error", err);
+            }
+             Destination.findOne({_id: id}, function(err, destination){ 
+              if(err) {
+                console.log("error", err);
+              } else {
+               res.render('./partials/eachdestinationshow', {destination: destination});
+               // res.send(destination);
+               // res.redirect('./partials/eachdestinationshow', {destination: destination});
+              }
             });
           });
-	      }
-      });
- 	  },
+        });
+      }
+    });
+  },
 
  	show: function(req, res) {
   	var id = req.params.id;
@@ -63,6 +73,12 @@ var postsController = {
       });
   	}
   });
+// =======
+//       console.log('POST ****', post)
+//   		if(err) returnError(err); 
+//        res.render('./partials/postshow', {postJS: JSON.stringify(post), post: post});
+//   	});
+// >>>>>>> Stashed changes
   },
 
  	update: function(req, res) {
