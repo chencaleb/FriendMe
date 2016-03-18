@@ -7,18 +7,17 @@ var postsController = {
  	  Post.find({}, function(err, posts) {
       res.status(200).send(JSON.stringify(posts));
     });
- 	},
+  },
 
-	index: function(req, res) {
+  index: function(req, res) {
     Post.find({}, function(err, posts) {
-     res.render('./partials/allposts', {posts: posts});
+    res.render('./partials/allposts', {posts: posts});
     });
   },
 
   new: function(req,res) {
     var id = req.params.id;
       Destination.findOne({_id: id}, function(err, destination){ 
-        console.log("DESTINATION", destination);
     	res.render('./partials/newpost', {destination: destination});
       });
   },
@@ -33,6 +32,7 @@ var postsController = {
     };
 
     var id = req.body.destinationID;
+    console.log("createPost ", id);
     console.log("SerializedDATA", req.body);
   	Post.create(post, function(err, createdPost) {
       if (err) {
@@ -40,7 +40,7 @@ var postsController = {
         res.status(500).send();
       } else {
           Destination.findOne({_id: id}, function(err, destination){ 
-            destination.posts.push(createdPost);
+            destination.posts.push(createdPost._id);
             destination.save(function() {
               console.log("post saved", createdPost);
               res.send(destination);
@@ -52,43 +52,55 @@ var postsController = {
 
  	show: function(req, res) {
   	var id = req.params.id;
+    var destId = req.params.destination_id;
   	Post.findById(id, function(err, post) {
-      // console.log('POST ****', post)
-  		if(err) returnError(err); 
-       res.render('./partials/postshow', {postJS: JSON.stringify(post), post: post});
-  		 // res.status(200).send(JSON.stringify(post));
-  	});
+  		if(err) {
+        returnError(err); 
+      } else {
+        Destination.findOne({_id: destId}, function(err, destination){ 
+        res.render('./partials/postshow', {postJS: JSON.stringify(post), post: post, destination: destination});
+      
+      });
+  	}
+  });
   },
-
-  // edit: function(req,res) {
-  // 	res.render('./partials/editpost');
-  // },
 
  	update: function(req, res) {
 		var id = req.params.id;
-			// console.log('UPDATE *******', id)
+    var destId = req.params.destination_id;
+		console.log(destId);
 	  Post.findById(id, function(err, post){
 	  	(console.log("POST", post));
-	  if (err) returnError(err);
-
+    if (err) returnError(err);
+    if (req.body.name) post.name = req.body.name;
     if (req.body.email) post.email = req.body.email;
 	  if (req.body.description) post.description = req.body.description;
     if (req.body.photoUrl) post.photoUrl = req.body.photoUrl;
-	  // console.log("REQ. BODY" , req);
+    if (req.body.startDate) post.startDate = req.body.startDate;
+    if (req.body.endDate) post.endDate = req.body.endDate;
 	  post.save(function(err, savedPost) {
-	    console.log("saved post***", savedPost);
-      console.log("error", err);
-	    err ? 
-	    	res.status(200) :
-        // res.render('./partials/postshow', {postJS: JSON.stringify(savedPost), post: savedPost});
-	    	res.status(200).send(JSON.stringify(savedPost))
+      if(err) {
+        res.status(200);
+      } else {
+        console.log("destination:", destId);
+        console.log("updatedPost:", savedPost);        
+        Destination.findOne({_id: destId}, function(err, destination){
+          // for(var i = 0; i < destination.posts.length; i++){
+          //   console.log("current iterator for destination posts", i, destination.posts[i]._id, post._id, savedPost._id);
+          //   if(destination.posts[i]._id == post._id) {
+          //     console.log("hi daniel i was hit", destination.posts[i]);
+          //     destination.posts[i] = savedPost;
+          //   }
+          // }
+          // destination.save();
+          res.send(destination);
+        });
+      }
 	  });
 	});
 },
 
    destroy: function(req, res) {
-    console.log("HELOO***", req.params.id);
-
     Post.remove({_id: req.params.id}, function(err, post) {
       console.log('REMOVED', post);
       err ? 
@@ -96,12 +108,11 @@ var postsController = {
         res.status(204).send(JSON.stringify(post));
       });
   }
-
 };
 
-	function returnError (err) {
-  	return console.log(err);
-	}
+function returnError (err) {
+  return console.log(err);
+}
 
 
 module.exports = postsController;
