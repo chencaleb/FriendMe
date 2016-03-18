@@ -13,13 +13,13 @@ FriendMe was designed to connect travellers with locals from places that they ar
 ###User Stories: https://trello.com/b/YAtZuCwz/project-3-friendme
 
 ###Technologies Used
-##jQuery
-##Express
-##HTML5/CSS
+#jQuery
+#Express
+#HTML5/CSS
 ##Mongodb
-##Mongoose
-##Github
-##Heroku
+#Mongoose
+#Github
+#Heroku
 
 ###Unsolved Problems
 1. Merge conflicts
