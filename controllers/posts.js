@@ -1,6 +1,7 @@
 var Post = require('../models/post');
 var Destination = require('../models/destination');
 
+
 var postsController = {
 
  	apiPosts: function(req, res) {
@@ -23,6 +24,7 @@ var postsController = {
   },
 
   create: function(req, res) {
+      console.log('IN CREATE FUNCTION')
   	var post =  {
       startDate: req.body.startDate,
       endDate: req.body.endDate,
@@ -32,18 +34,25 @@ var postsController = {
     };
 
     var id = req.body.destinationID;
-    console.log("createPost ", id);
-    console.log("SerializedDATA", req.body);
+      console.log("createPost ", id);
+      console.log("SerializedDATA".bgYellow, req.body);
   	Post.create(post, function(err, createdPost) {
       if (err) {
-        console.log(err);
+        console.log("ERROR", err);
         res.status(500).send();
       } else {
           Destination.findOne({_id: id}, function(err, destination){ 
-            destination.posts.push(createdPost._id);
-            destination.save(function() {
-              console.log("post saved", createdPost);
+                console.log("ERROR", err);
+                console.log("Created Post".bgMagenta, createdPost);
+              destination.posts.push(createdPost);
+                console.log("Destination".bgMagenta, destination);
+            destination.save(function(err, destination) {
+              if(err){
+                console.log("ERROR".bgRed, err);
+              } else {
+              console.log("post saved".bgBlue, destination);
               res.send(destination);
+              }
             });
           });
 	      }
@@ -54,12 +63,13 @@ var postsController = {
   	var id = req.params.id;
     var destId = req.params.destination_id;
   	Post.findById(id, function(err, post) {
+        console.log(err);
+        console.log(' POST ', post);
   		if(err) {
         returnError(err); 
       } else {
         Destination.findOne({_id: destId}, function(err, destination){ 
         res.render('./partials/postshow', {postJS: JSON.stringify(post), post: post, destination: destination});
-      
       });
   	}
   });
@@ -85,13 +95,7 @@ var postsController = {
         console.log("destination:", destId);
         console.log("updatedPost:", savedPost);        
         Destination.findOne({_id: destId}, function(err, destination){
-          // for(var i = 0; i < destination.posts.length; i++){
-          //   console.log("current iterator for destination posts", i, destination.posts[i]._id, post._id, savedPost._id);
-          //   if(destination.posts[i]._id == post._id) {
-          //     console.log("hi daniel i was hit", destination.posts[i]);
-          //     destination.posts[i] = savedPost;
-          //   }
-          // }
+        
           // destination.save();
           res.send(destination);
         });

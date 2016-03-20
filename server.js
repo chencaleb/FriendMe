@@ -12,6 +12,7 @@ var express 	   	= require('express'),
 	bcrypt 			    = require('bcrypt'),
 	session 		    = require("express-session"),
 	keygen			    = require('keygenerator'),
+  color           = require('colors'),
 	User 			      = require("./models/user");
 
 //middleware

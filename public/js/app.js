@@ -30,8 +30,9 @@ function validatePassword(){
     confirm_password.setCustomValidity('');
   }
 }
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
+// password.onchange = validatePassword;
+// confirm_password.onkeyup = validatePassword;
+
 });
 
   var user = {};
@@ -107,6 +108,7 @@ user.renderUser = function(user) {
   $profilePage.html("");
   var userTemplate = Handlebars.compile($('#user-template').html());
   var compiledHTML = userTemplate({user: showUser});
+    console.log('USER', showUser)
   $profilePage.append(compiledHTML);
 };
 
@@ -114,7 +116,9 @@ user.renderUser = function(user) {
 post.createPost = function(e) {
   e.preventDefault();
   var id = $('#destinationID').val();
+    console.log('Destination ID', id)
   var newPost = $(e.target).serialize();
+      console.log("NEWPOST", newPost)
   $.post('/api/destinations/' + id, newPost)
     .done(function(res) {
      window.location.href = '/api/destinations/' + id;

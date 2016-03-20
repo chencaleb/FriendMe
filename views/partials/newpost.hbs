@@ -1,18 +1,9 @@
-<h2 class="addNewPost"class="margin-top"> Add New Post </h2>
 
+<h2 class="addNewPost"class="margin-top"> Add New Post </h2>
 <div id="new_post_form_div">
     <form class="" id="new_post_form" onsubmit="post.createPost(event)">
         <input type="text" name="destinationID" hidden=true value={{destination._id}} id="destinationID">
 
-		<div class = "row">
-			<label for="startDate">Start Date:</label><br />
-			<input type="date" name="startDate">
-		</div>
-
-		<div class = "row">
-			<label for="endDate">End Date:</label><br />
-			<input type="date" name="endDate">
-		</div>
 
         <div class="row">
             <label for="name">Name:</label><br />
@@ -36,5 +27,14 @@
 
         <input class="btn btn-primary" id="create_post" type="submit" value="Create Post" />
 
+		<div class = "row">
+			<label for="startDate">Start Date:</label><br />
+			<input type="date" name="startDate">
+		</div>
+
+		<div class = "row">
+			<label for="endDate">End Date:</label><br />
+			<input type="date" name="endDate">
+		</div>
     </form>    
 </div>
