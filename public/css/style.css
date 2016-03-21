@@ -1,8 +1,8 @@
-html body {width: 100%; height: 100%}
+/*html body {width: 100%; height: 100%}*/
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  color: #fff;
+  color: #black;
 }
 
 li a{
@@ -127,7 +127,7 @@ li a{
 
 .fixed {
   margin-top: 0%;
-  position: fixed;
+  /*position: fixed;*/
   width: 100%;
 }
 
@@ -161,14 +161,11 @@ h1{
   height:14em;
 }
 
-
-
 footer {
- 
   width: 100%;
   background-color: #f5f5f5;
-  z-index: 1000000000;
-}
+/*  z-index: 1000000000;
+*/}
 
 body > .container {
   padding: 60px 15px 0;
@@ -177,6 +174,14 @@ body > .container {
 .container .text-muted {
   margin: 20px 0;
 }
+
+/*.footer {
+  bottom: 100px;
+  height: 50px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}*/
 
 footer > .container {
   padding-right: 15px;
