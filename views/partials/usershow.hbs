@@ -2,21 +2,17 @@
 
  <script id="user-template" type="text/x-handlbars-template">
  <div id="profilePages">
-
     <h1><span id="headerFirstName">\{{user.firstName}} \{{user.lastName}}</span> </h1>
-
         <div id="\{{user._id}}" class="profile">
               <img src="\{{user.photoUrl}}"alt="profile pic" id="profile_image">
               <p> <strong>Name:</strong> <br /> <span id="displayFirstName"> \{{user.firstName}}</span> </p> 
               <p> <strong>Last name:</strong> <br /> <span id="displayLastName">\{{user.lastName}}</span> </p>
               <p> <strong>Email:</strong> <br /> <span id="displayEmail"> \{{user.email}}</span> </p>
-
       <button class="btn btn-primary" id="modalEditUser"  data-toggle="modal" data-target="#triggerEditModal">Edit</button>
             <button class= "btn btn-primary" onclick="user.deleteUser(event)">Delete</button>
     </div>
     <!--   <button class= "btn btn-primary" onclick="user.createPost(event)" >Add a Post</button> -->
 </div>
-
 <footer class="text-center">
     <div class="footer-above">
         <div class="container">
@@ -92,10 +88,8 @@
                 <label class="col-md-4 control-label" for="passwordDigest">Password</label>
                 <div class="col-md-4">
                 <input id="passwordDigest" name="passwordDigest" type="password" value="{{user.password}}" class="form-control input-md" required="">
-
                 </div>
               </div>
-
               <!-- Text input-->
               <div class="form-group">
                 <label class="col-md-4 control-label" for="password">Confirmation password</label>
