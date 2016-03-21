@@ -116,9 +116,9 @@ user.renderUser = function(user) {
 post.createPost = function(e) {
   e.preventDefault();
   var id = $('#destinationID').val();
-    console.log('Destination ID', id)
+    // console.log('Destination ID', id);
   var newPost = $(e.target).serialize();
-      console.log("NEWPOST", newPost)
+     ;
   $.post('/api/destinations/' + id, newPost)
     .done(function(res) {
      window.location.href = '/api/destinations/' + id;
@@ -131,12 +131,16 @@ post.createPost = function(e) {
 post.editPost = function(e) {
   e.preventDefault();
   var id = $('#postID').val();
-  console.log("asdafdasa", id);
+  // console.log("asdafdasa", id);
   var destId = $('#editDestinationId').val();
   console.log("destId", destId);
   var updateData = {
+    name: $('#name').val(),
     email: $('#email').val(),
-    description: $('#description').val()
+    description: $('#description').val(),
+    startDate: $('#startDate').val(),
+    endDate: $('#endDate').val(),
+    photoUrl: $('#photoUrl').val()
   };
 
   var ajaxOption = {
@@ -147,12 +151,15 @@ post.editPost = function(e) {
     success: function(res) {
       // console.log("UPDATED DATA", updateData);
       // console.log(res);
-      // $('#postDescription').html(updateData.description);
+      $('#postName').html(updateData.name);
+      $('#postEmail').html(updateData.email);
+      $('#postDescription').html(updateData.description);
+      $('#postStart').html(updateData.startDate);
+      $('#postEnd').html(updateData.endDate);
+      $('#postPhotoUrl').html(updateData.photoUrl)
+
       $('#editForm').hide();
       window.location.href = '/api/destinations/' + destId;
-      // $('savedPost').html(response);
-      // $('#postEmail').html(updateData.email)
-      // $('#displayPhotoUrl').html(updateData.photoUrl)
     }
   };
   $.ajax(ajaxOption);
