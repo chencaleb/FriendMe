@@ -145,10 +145,11 @@ post.editPost = function(e) {
     dataType: 'json',
     data: updateData,
     success: function(res) {
-      console.log("UPDATED DATA", updateData);
-      console.log(res);
-      $('#postDescription').html(updateData.description);
+      // console.log("UPDATED DATA", updateData);
+      // console.log(res);
+      // $('#postDescription').html(updateData.description);
       $('#editForm').hide();
+      window.location.href = '/api/destinations/' + destId;
       // $('savedPost').html(response);
       // $('#postEmail').html(updateData.email)
       // $('#displayPhotoUrl').html(updateData.photoUrl)

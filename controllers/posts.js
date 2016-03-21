@@ -44,7 +44,7 @@ var postsController = {
           Destination.findOne({_id: id}, function(err, destination){ 
                 console.log("ERROR", err);
                 console.log("Created Post".bgMagenta, createdPost);
-              destination.posts.push(createdPost);
+              destination.posts.push(createdPost); 
                 console.log("Destination".bgMagenta, destination);
             destination.save(function(err, destination) {
               if(err){
@@ -59,6 +59,23 @@ var postsController = {
       });
  	  },
 
+  // show: function(req, res) {
+  //   var id = req.params.id;
+  //   var destId = req.params.destination_id;
+  //   Destination.find({'_id': destId , 'posts._id': id}, function(err, destination) {
+  //       console.log(err);
+  //       console.log(' destination '.green, destination);
+  //       destination.posts.find({'_id': id}, function(err, post) {
+  //         console.log(' destination.post '.blue, post);
+  //       })
+  //     if(err) {
+  //       returnError(err); 
+  //     } else {
+  //       res.render('./partials/postshow', {postJS: JSON.stringify(destination.posts), post: post, destination: destination});
+  //     }
+  //   });
+  // },
+
  	show: function(req, res) {
   	var id = req.params.id;
     var destId = req.params.destination_id;
@@ -70,8 +87,8 @@ var postsController = {
       } else {
         Destination.findOne({_id: destId}, function(err, destination){ 
         res.render('./partials/postshow', {postJS: JSON.stringify(post), post: post, destination: destination});
-      });
-  	}
+        });
+  	 }
   });
   },
 
@@ -88,20 +105,34 @@ var postsController = {
     if (req.body.photoUrl) post.photoUrl = req.body.photoUrl;
     if (req.body.startDate) post.startDate = req.body.startDate;
     if (req.body.endDate) post.endDate = req.body.endDate;
-	  post.save(function(err, savedPost) {
-      if(err) {
-        res.status(200);
-      } else {
-        console.log("destination:", destId);
-        console.log("updatedPost:", savedPost);        
-        Destination.findOne({_id: destId}, function(err, destination){
-        
-          // destination.save();
-          res.send(destination);
+
+    // Destination.update({_id: destId, "posts._id": id },
+    //  {'$set': { "posts.$.description" : req.body.description } }, 
+    //   function(err, updatedPost) {
+    //     if(err) {
+    //       console.log("ERROR".bgRed, err);
+    //     } else {
+    //       console.log("UPDATED POSt".bgYellow, updatedPost);
+    //       res.send(updatedPost);
+    //     }
+    // });
+     Destination.findOne({_id: destId}, function(err, destination){
+        destination.posts.forEach(function(post) {
+            console.log("POST ID".green, post._id);
+          if (post._id == id) {
+            console.log('req.body.description ', req.body.description)
+            post.description = req.body.description;
+            post.name = req.body.name;
+            post.email = req.body.email;
+            post.startDate = req.body.startDate;
+            post.endDate = req.body.endDate;
+          }
         });
-      }
-	  });
-	});
+            console.log('post ** **', destination.posts);
+          destination.save();
+          res.send(destination);
+    });
+  });
 },
 
    destroy: function(req, res) {
