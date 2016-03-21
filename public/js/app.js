@@ -30,8 +30,9 @@ function validatePassword(){
     confirm_password.setCustomValidity('');
   }
 }
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
+// password.onchange = validatePassword;
+// confirm_password.onkeyup = validatePassword;
+
 });
 
   var user = {};
@@ -107,6 +108,7 @@ user.renderUser = function(user) {
   $profilePage.html("");
   var userTemplate = Handlebars.compile($('#user-template').html());
   var compiledHTML = userTemplate({user: showUser});
+    console.log('USER', showUser)
   $profilePage.append(compiledHTML);
 };
 
@@ -114,7 +116,9 @@ user.renderUser = function(user) {
 post.createPost = function(e) {
   e.preventDefault();
   var id = $('#destinationID').val();
+    // console.log('Destination ID', id);
   var newPost = $(e.target).serialize();
+     ;
   $.post('/api/destinations/' + id, newPost)
     .done(function(res) {
      window.location.href = '/api/destinations/' + id;
@@ -127,12 +131,16 @@ post.createPost = function(e) {
 post.editPost = function(e) {
   e.preventDefault();
   var id = $('#postID').val();
-  console.log("asdafdasa", id);
+  // console.log("asdafdasa", id);
   var destId = $('#editDestinationId').val();
   console.log("destId", destId);
   var updateData = {
+    name: $('#name').val(),
     email: $('#email').val(),
-    description: $('#description').val()
+    description: $('#description').val(),
+    startDate: $('#startDate').val(),
+    endDate: $('#endDate').val(),
+    photoUrl: $('#photoUrl').val()
   };
 
   var ajaxOption = {
@@ -141,13 +149,17 @@ post.editPost = function(e) {
     dataType: 'json',
     data: updateData,
     success: function(res) {
-      console.log("UPDATED DATA", updateData);
-      console.log(res);
+      // console.log("UPDATED DATA", updateData);
+      // console.log(res);
+      $('#postName').html(updateData.name);
+      $('#postEmail').html(updateData.email);
       $('#postDescription').html(updateData.description);
+      $('#postStart').html(updateData.startDate);
+      $('#postEnd').html(updateData.endDate);
+      $('#postPhotoUrl').html(updateData.photoUrl)
+
       $('#editForm').hide();
-      // $('savedPost').html(response);
-      // $('#postEmail').html(updateData.email)
-      // $('#displayPhotoUrl').html(updateData.photoUrl)
+      window.location.href = '/api/destinations/' + destId;
     }
   };
   $.ajax(ajaxOption);

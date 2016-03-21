@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 var PostSchema = require('./post').schema;
 
 var DestinationSchema = new Schema({
-	name: {type: String, required: true},
+	name: String,
 	photoUrl: String,
-	posts: [String]
+	posts: [PostSchema]
 });
 
 var Destination = mongoose.model('Destination', DestinationSchema);

@@ -17,6 +17,7 @@ var destinationsController = {
       // iterate through the destination.posts then use find on each post find in a lump
       // posts.push(post)
   		if(err) returnError(err);
+       destination.posts.reverse();
   		 res.render('./partials/eachdestinationshow', { destination: destination}); // <- pass the whole posts into here ex: posts:posts
   	});
   },

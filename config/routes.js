@@ -70,6 +70,7 @@ router.route('/destinations')
 
 router.route('/api/destinations')
 	.get(destinationsController.apiDestinations);
+	
 
 router.route('/api/destinations/:id')
 	.get(destinationsController.show)
