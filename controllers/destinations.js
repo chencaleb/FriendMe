@@ -6,7 +6,7 @@ var destinationsController = {
 	 index: function(req, res) {
   	Destination.find({}, function(err, destinations) {
   		if(err) returnError(err);
-  		 res.render('./partials/destinationsindex', { destinations: destinations});
+  		 res.render('./destinationsindex', { destinations: destinations});
   	});
   },
 
