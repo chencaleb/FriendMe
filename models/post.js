@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
-	destinationId: String,
 	name: String,
 	email: String,
 	description: String,

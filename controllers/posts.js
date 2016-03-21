@@ -105,7 +105,6 @@ var postsController = {
     if (req.body.photoUrl) post.photoUrl = req.body.photoUrl;
     if (req.body.startDate) post.startDate = req.body.startDate;
     if (req.body.endDate) post.endDate = req.body.endDate;
-
     // Destination.update({_id: destId, "posts._id": id },
     //  {'$set': { "posts.$.description" : req.body.description } }, 
     //   function(err, updatedPost) {
@@ -129,8 +128,23 @@ var postsController = {
           }
         });
             console.log('post ** **', destination.posts);
-          destination.save();
-          res.send(destination);
+          destination.save(function(err, destination){
+            Post.findOne({_id: id}, function(err, post) {
+              post.description = req.body.description;
+              post.name = req.body.name;
+              post.email = req.body.email;
+              post.startDate = req.body.startDate;
+              post.endDate = req.body.endDate;
+                post.save(function(err, post) { 
+                  if (err) {
+                    console.log("ERROR".bgRed, err);
+                  } else {
+                    res.send(post);
+                  }
+              });
+            });
+          });
+
     });
   });
 },
